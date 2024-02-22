@@ -1,0 +1,35 @@
+nav{ 
+    position: re;
+    background-color: antiquewhite;
+    padding: 30px;
+    position: relative;
+}
+a{
+    color: black;
+    text-decoration: none;
+    padding: 30px;
+}
+.FloatLeft{
+    float: left;
+    font-size: larger;
+    font-weight: 300;
+}
+.LogIn{
+    float: right;
+}
+.img{
+    position: absolute;
+    top: 300px;
+    left: 750px;
+    height: 200px;
+    width: 300px;
+}
+body{
+   
+    background: linear-gradient(to left, #e2f0e5, #eb9db0 , #eee , #7eace0 );
+}
+p{
+    top: 500px;
+    left: 800px;
+   position: absolute;
+}

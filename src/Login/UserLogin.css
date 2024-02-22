@@ -1,0 +1,42 @@
+.forms{
+    border: 1px solid #f5e7e7;
+    padding:10px;
+    margin: 50px 700px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+}
+.forms div{
+    padding-top: 10px;
+}
+input{
+    padding: 10px;
+    border-radius: 10px;
+}
+.button{
+    align-items: center;
+    padding:5px;
+    font-size: larger;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 5cm;
+}
+
+.row1,.row2,.row3{
+    font-size: larger;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    background-color: rgb(232, 214, 248);
+    padding: 15px;
+}
+.row1 input{
+    margin-left:3px;
+}
+.row2 input{
+    margin-left:10px;
+}
+.image{
+    align-items: center;
+    margin-left: 1.5cm;
+}
