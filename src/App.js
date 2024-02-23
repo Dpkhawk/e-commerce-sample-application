@@ -1,12 +1,13 @@
 import NavigationBar from './HomePage/NavigationBar';
 import LoginPage from './Login/UserLogin';
 import SignUp from './SignUp/SignUpPage';
+import './HomePage/NavigationBar.css'
 function App() {
   return (
    <>
-   {/* <NavigationBar/> */}
+   <NavigationBar/>
    {/* <LoginPage/> */}
-   <SignUp/>
+   {/* <SignUp/> */}
    </>
   );
 }

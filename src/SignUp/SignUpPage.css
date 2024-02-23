@@ -4,9 +4,10 @@ legend{
     border: 3px solid black; 
 }
 fieldset{
-    margin-right: 15cm;
+    margin-right: 50cm;
     background-color: white;
     border: 2px solid black;
+    border-radius: 10px;
 }
 .signUpInput{
     padding: 10px;
@@ -14,5 +15,39 @@ fieldset{
     width: 200px;
 }
 .signUpLabel{
+    font-size: larger;
     padding-top: 20px;
+}
+.addressInput{
+    display: block;
+    width: 500px;
+}
+.genderDiv{
+    padding-top: 5px;
+    padding-bottom:20px ;
+}
+.zipcode,.dob{
+    float: right;
+}
+.districtSelection{
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+.signUpButton{
+    position: relative;
+    top:10px ;
+    left: 6cm;
+    padding: 5px;
+    width: 100px;  
+    font-weight: 300;  
+}
+.signUp{
+    margin-top: 70px;
+    margin-left: 700px;
+}
+.password{
+    float: right;
 }
