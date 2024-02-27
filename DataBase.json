@@ -1,0 +1,26 @@
+{
+  "registers": [
+    {
+      "id": "Deepak Kumar P",
+      "email": "deepak@gmail.com",
+      "dob": "2001-12-12",
+      "mobileNumber": "7598686691",
+      "gender": "Male",
+      "address": "Siruseri,chennai",
+      "password": "Abi@12",
+      "zipcode": "639005",
+      "district": "Karur"
+    },
+    {
+      "id": "Vijay",
+      "email": "Vijay@gmail.com",
+      "dob": "2001-05-05",
+      "mobileNumber": "6383373303",
+      "gender": "Female",
+      "address": "T.kulam.js",
+      "password": "Vj@5",
+      "zipcode": "789546",
+      "district": "Erode"
+    }
+  ]
+}

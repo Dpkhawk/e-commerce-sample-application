@@ -1,16 +1,26 @@
+import { useEffect, useState } from 'react'
 import './NavigationBar.css'
-export default function NavigationBar(){
+import NavigationBar from './Navigation'
+
+export default function Body({searchItems,setSearchItems}){
+    // const[data,setData]=useState([])
+    //   useEffect(()=>{
+    //    fetch('http://localhost:3000/Vegetables')
+    //    .then(response=>setData(response.json()))
+    //   // .then((data)=>setData(data))
+         
+    // },[])
+    // useEffect(()=>{
+    //     async function showProducts(){
+    //         const datas=await fetch(`http://localhost:3000/Vegetables`)
+    //         const Productdata=await datas.json()
+    //         setData([...data,...Productdata])
+    //         console.log(Productdata[0].name);
+    //         }
+    //         showProducts()
+    // },[])
     return(<>
-   <nav>
-    <div className='FloatLeft'>
-            <a href='#'>Home</a>
-            <a href='#'>About</a>
-            <a href='#'>Product</a>
-            <a href='#'>Contact</a>
-            </div>
-            <input className='searchBar'placeholder='search items' type='search'/>
-            <div className='LogIn'><a href='#'>SignUp</a><a href='#'>LogIn</a></div>         
-    </nav>
+    <NavigationBar/>
     <div className='items'>
     <div className='products'>
         <div><img className="products-img" src='https://www.jiomart.com/images/product/original/590000186/carrot-orange-500-g-product-images-o590000186-p590000186-0-202207291751.jpg?im=Resize=(1000,1000)'/></div><br/>

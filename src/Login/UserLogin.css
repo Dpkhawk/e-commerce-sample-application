@@ -25,7 +25,7 @@ input{
     font-size: larger;
     text-align: center;
 }
-h1{
+.login{
     text-align: center;
     background-color: rgb(232, 214, 248);
     padding: 15px;
