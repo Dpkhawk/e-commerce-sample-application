@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { LevelContext } from '../App'
 export default function NavigationBar(){
+    //const[loginName,setLoginName]=useState('')
     const newValue=useContext(LevelContext)
+    // if(newValue.login.login){
+    //     setLoginName('Login')
+    // }
+    // else{
+    //     setLoginName('Logout')
+    // }
    return( <nav>
     <div className='FloatLeft'>
             <Link to={'/'} className='homeLinks'>Home</Link>
@@ -11,6 +18,6 @@ export default function NavigationBar(){
             <Link className='homeLinks'>Contact</Link>
             </div>
             <input className='searchBar'placeholder='search items' type='search' value={newValue.searchItemsValue.searchItems} onChange={(e)=>newValue.setSearchItemsFunction.setSearchItems(e.target.value)}/>
-            <div className='LogIn'><Link to={'/signup'} className='homeLinks'>SignUp</Link><Link to={'/loginPage'} className='homeLinks'>Login</Link></div>         
+            <div className='LogIn'><Link to={'/signup'} className='homeLinks'>SignUp</Link><Link to={'/loginPage'} className='homeLinks'>{newValue.login?'Login':'Logout'}</Link></div>         
     </nav>)
 }

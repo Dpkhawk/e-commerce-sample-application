@@ -23,7 +23,8 @@ nav{
     float: right;
 }
 #bodys{
-    background-image: url('https://w.forfun.com/fetch/75/75a1f8cd144c36e9e5774b870d06ac57.jpeg');
+    /* background-image: url('https://w.forfun.com/fetch/75/75a1f8cd144c36e9e5774b870d06ac57.jpeg'); */
+    background-color: rgb(240, 247, 247);
  }
  .searchBar{
     padding:10px;
@@ -34,7 +35,7 @@ nav{
     display: flex;
     margin: 4cm;
     flex-direction: row;
-    gap: 50px;
+    gap: 40px;
  } 
  .products{
     display: flex;

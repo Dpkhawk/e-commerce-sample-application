@@ -21,6 +21,18 @@
       "password": "Vj@5",
       "zipcode": "789546",
       "district": "Erode"
+    },
+    {
+      "id": "Abi",
+      "designation": "Ms",
+      "email": "abi@gmail.com",
+      "dob": "2002-02-24",
+      "mobileNumber": "7598686691",
+      "gender": "Male",
+      "address": "sirumugai",
+      "password": "deepak@12",
+      "zipcode": "78635",
+      "district": "Erode"
     }
   ]
 }

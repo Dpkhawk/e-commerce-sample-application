@@ -40,3 +40,12 @@ input{
     align-items: center;
     margin-left: 1.5cm;
 }
+.forgotpassword{
+    font-size: large;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+}
+.forgotpassword:hover{
+    background-color: rgb(107, 103, 103);
+}

@@ -18,9 +18,9 @@ export default function SignUp(){
          e.preventDefault()
        const dataObject={designation,id,email,dob,mobileNumber,gender,address,password,zipcode,district}
         if(password===confirmPassword){
-             fetch('http://localhost:3000/registers',{
+             fetch('http://localhost:3002/registers',{
                 method:"POST",
-                headers:{'content-type':'application/json'},
+                // headers:{'content-type':'application/json'},
                 body:JSON.stringify(dataObject)
              })
              .then(()=>usenavigation('/loginPage'))
@@ -37,11 +37,12 @@ export default function SignUp(){
         <legend >
             Registration Form
         </legend>
+        <form onSubmit={(e)=>handleSubmit(e)}>
         <tr>
         <td><label for='designation' className='signUpLabel' >
             Select the Designation:
         </label></td>
-        <td><select id='designation' required onChange={(e)=>setDesignation(e.target.value)}><option value='Mr'>Mr</option><option value='Ms'>Ms</option><option value='Mrs'>Mrs</option></select></td></tr><br/>
+        <td><select id='designation' required onChange={(e)=>setDesignation(e.target.value)}><option value='Mr' selected>Mr</option><option value='Ms'>Ms</option><option value='Mrs'>Mrs</option></select></td></tr><br/>
         <label className='signUpLabel' for='username'>
             Enter the UserName:
         </label><br/>
@@ -88,7 +89,8 @@ export default function SignUp(){
             <option value='Namakkal'>Namakkal</option>
         </select>
         <input className='zipcode'required type='text' placeholder='Zip Code' onChange={(e)=>setZipCode(e.target.value)}/><br/>
-        <button className='signUpButton' onClick={(e)=>handleSubmit(e)}>Submit</button>
+        <button className='signUpButton' >Submit</button>
+        </form>
     </fieldset>
     </div>
     {/* {console.log(designation,dob,email,gender,mobileNumber,address,password,confirmPassword,district,zipcode,userName)} */}
