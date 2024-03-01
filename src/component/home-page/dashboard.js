@@ -1,6 +1,8 @@
 import {  useEffect, useState } from "react";
+
+
 import NavigationBar from "./navigation-bar";
-import ProductItemView from "../Products/product-item-view";
+import ProductItemView from "../products/product-item-view";
 import Footer from "../footer/footer";
 export default function DashBoard() {
   const [productData, setProductData] = useState([]);

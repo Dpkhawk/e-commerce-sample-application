@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { LevelContext } from "../../Route";
+import { LevelContext } from "../../route";
+
+
 export default function NavigationBar() {
   const newValue = useContext(LevelContext);
   return (

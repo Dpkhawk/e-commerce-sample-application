@@ -1,12 +1,15 @@
-import LoginPage from "../Component/Login/UserLogin";
-import SignUp from "../Component/SignUp/sign-up-page";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext } from "react";
-import Products from "../Component/Products/productsPage";
-import DashBoard from "../Component/HomePage/dashboard";
-import ForgotPassword from "../Component/ForgotPassword/ForgotPassword";
 import { useState } from "react";
-import Footer from "../Component/footer/footer";
+
+
+import LoginPage from "../component/login/UserLogin";
+import SignUp from "../component/signup/sign-up-page";
+import Products from "../component/products/productsPage";
+import DashBoard from "../component/home-page/dashboard";
+import ForgotPassword from "../component/forgot-password/ForgotPassword";
+import Footer from "../component/footer/footer";
+
 export const LevelContext = createContext();
 
 export default function Router() {

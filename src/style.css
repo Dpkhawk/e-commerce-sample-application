@@ -58,12 +58,8 @@ nav{
  .products-text{
   padding-left: 7px;
 }
-.products-select{
-    width: 6cm;
-    text-align: center;
-    padding: 6px;
-    border-radius: 5px;
-    font-size: larger;
+.inputQuantity{
+    width: 3cm;
 }
 .products-button{
     width: 5cm;
@@ -239,4 +235,69 @@ fieldset{
     align-items: center;
     background-color: rgb(148, 147, 145);
     border-radius: 10px;
+}
+.inputQuantity{
+    padding: 20px;
+
+}
+.orderedItems div{
+    padding: 10px;
+}
+.orderedItems input{
+    width: 0.5cm;
+    padding: 5px;
+}
+.cartOuter{
+    display: flex;
+    flex-direction: column;
+}
+.innerCart{
+    border: 1px solid black;
+    display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+}
+.cartImage{
+    width: 4cm;
+    height: 4cm;
+    padding: 30px;
+    display: inline;
+}
+.cartPriceDiscount{
+    padding: 50px 30px;
+}
+.cartOuter{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 'leftSideContent mainContent mainContent mainContent rightSideContent' 
+}
+.leftSideContent{
+    grid-area: leftSideContent;   
+}
+.mainContent{
+    grid-area: mainContent;
+    width: 100%;
+}
+.rightSideContent{
+    grid-area: rightSideContent;
+}
+.innerCart{
+    border-radius: 20px;
+    margin: 40px;
+}
+.cartInput{
+    width: 100px;
+    height: 20px;
+    margin: 100px; 
+     display: inline;
+}
+.cartPrice{
+   
+    margin-left: 300px;
+    margin-top: 90px; 
+   border: 1px solid;
+  
 }

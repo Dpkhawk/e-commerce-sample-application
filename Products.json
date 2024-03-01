@@ -3,7 +3,6 @@
     {
       "id": 0,
       "name": "Carrot",
-      "quantity": [1, 3, 5],
       "src": "https://www.jiomart.com/images/product/original/590000186/carrot-orange-500-g-product-images-o590000186-p590000186-0-202207291751.jpg?im=Resize=(1000,1000)",
       "price": 20,
       "discount": 75
@@ -11,14 +10,12 @@
     {
       "id": 1,
       "name": "Capsicum",
-      "quantity": [1, 2, 5],
       "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
       "price": 17,
       "discount": 30
     },
     {
       "id": 2,
-      "name": "Cabbage",
       "quantity": [1, 3, 5],
       "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlSmMQmoGhFnckZYMqmw7jMfr6xdBRVHpsd-PrU0D1UFa3_NB0",
       "price": 32,
@@ -27,7 +24,6 @@
     {
       "id": 3,
       "name": "Cauliflower",
-      "quantity": [1, 2, 5],
       "src": "https://m.media-amazon.com/images/I/91EdPVzD99L._AC_UF1000,1000_QL80_.jpg",
       "price": 23,
       "discount": 26
@@ -35,7 +31,6 @@
     {
       "id": 4,
       "name": "Broccoli",
-      "quantity": [1, 3, 5],
       "src": "https://cdn.britannica.com/25/78225-050-1781F6B7/broccoli-florets.jpg",
       "price": 18,
       "discount": 21
@@ -43,7 +38,6 @@
     {
       "id": 5,
       "name": "Spinach",
-      "quantity": [1, 2, 5],
       "src": "https://freshji.in/wp-content/uploads/2020/09/Spinach-1.jpg",
       "price": 9,
       "discount": 13
@@ -51,70 +45,174 @@
     {
       "id": 6,
       "name": "Lettuce",
-      "quantity": [1, 3, 5],
       "src": "https://trikaya.net/cdn/shop/products/LettuceLeafytabletop_800x.jpg?v=1594756664",
       "price": 35,
       "discount": 42
     },
     {
-      "id": 1,
-      "name": "capsicum",
-      "quantity": [1, 2, 5],
-      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
-      "price": 20,
-      "discount": 75
+      "id":7,
+      "name": "Bitter Melon",
+      "src": "https://4.imimg.com/data4/OS/PC/MY-2/bitter-gourd.jpg",
+      "price": 30,
+      "discount": 42
     },
     {
-      "id": 0,
-      "name": "Carrot",
-      "quantity": [1, 3, 5],
-      "src": "https://www.jiomart.com/images/product/original/590000186/carrot-orange-500-g-product-images-o590000186-p590000186-0-202207291751.jpg?im=Resize=(1000,1000)",
-      "price": 20,
-      "discount": 75
+      "id": 8,
+      "name": "Ridge Gourd",
+      "src": "https://m.media-amazon.com/images/I/61N65aFfSPL._AC_UF1000,1000_QL80_.jpg",
+      "price": 36,
+      "discount": 48
     },
     {
-      "id": 1,
-      "name": "capsicum",
-      "quantity": [1, 2, 5],
-      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
-      "price": 20,
-      "discount": 75
+      "id": 9,
+      "name": "Cluster Beans",
+      "src": "https://www.jiomart.com/images/product/original/590003547/cluster-beans-500-g-product-images-o590003547-p590003547-0-202203151354.jpg?im=Resize=(420,420)",
+      "price": 10,
+      "discount": 15
     }
   ],
   "fruits":[
     {
-      "id": 0,
-      "name": "apple",
-      "quantity": [1, 2, 5],
+      "id":10,
+      "name": "Apple",
       "src": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
-      "price": 20,
-      "discount": 75
+      "price": 16,
+      "discount": 25
     },
     {
-      "id": 1,
-      "name": "guava",
-      "quantity": [500, 1, 5],
-      "src": "https://m.media-amazon.com/images/I/71kXDC2aLmL._AC_UF1000,1000_QL80_.jpg",
-      "price": 20,
-      "discount": 75
+      "id":11,
+      "name": "Guava",
+      "src": "https://fruitboxco.com/cdn/shop/products/asset_19_grande.jpg?v=1594383262",
+      "price": 18,
+      "discount": 22
+    },
+    {
+      "id":12,
+      "name":"Orange",
+      "src": "https://hips.hearstapps.com/hmg-prod/images/orange-1558624428.jpg",
+      "price": 70,
+      "discount": 120
+    },
+    {
+      "id":13,
+      "name":"Water Melon",
+      "src": "https://cdn.britannica.com/99/143599-050-C3289491/Watermelon.jpg",
+      "price": 130,
+      "discount": 145
+    },
+    {
+      "id":14,
+      "name":"Tomato",
+      "src": "https://m.economictimes.com/thumb/msid-95423731,width-1200,height-900,resizemode-4,imgsize-56196/tomatoes-canva.jpg",
+      "price": 35,
+      "discount": 42
+    },
+    {
+      "id":15,
+      "name":"Pomegranate",
+      "src": "https://m.media-amazon.com/images/I/611a1wD9ZGL._AC_UF1000,1000_QL80_.jpg",
+      "price": 70,
+      "discount": 120
+    },
+    {
+      "id":16,
+      "name":"PineApple",
+      "src": "https://kidseatincolor.com/wp-content/uploads/2021/10/Pineapple.jpg",
+      "price": 90,
+      "discount": 100
+    },
+    {
+      "id":17,
+      "name":"Banana",
+      "src": "https://fruitboxco.com/cdn/shop/products/asset_2_grande.jpg?v=1571839043",
+      "price": 30,
+      "discount": 40
+    },
+    {
+      "id":18,
+      "name":"Kiwi",
+      "src": "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Kiwi-fruits-582a07b.jpg?quality=90&resize=556,505",
+      "price": 55,
+      "discount": 60
+    },
+    {
+      "id":19,
+      "name":"Dragon Fruit",
+      "src": "https://5.imimg.com/data5/HX/OR/MY-3040698/dragon-fruit.jpg",
+      "price": 120,
+      "discount": 140
     }
   ],
   "Non-Veg":[
     {
-      "id": 0,
+      "id":20,
       "name": "Chicken",
-      "quantity": [1, 2, 5],
       "src": "https://previews.123rf.com/images/dulsita/dulsita1307/dulsita130700068/21201847-pieces-of-raw-chicken-meat.jpg",
       "price": 200,
       "discount": 300
     },
     {
-      "id":1,
+    "id":21,
     "name":"Mutton",
-    "quantity":[1,2,5],
     "src":"https://thekitchencommunity.org/wp-content/uploads/2022/10/mutton-meat.jpeg",
     "price":900,
     "discount":1000
+  },
+  {
+    "id":22,
+    "name": "Fish",
+    "src": "https://t3.ftcdn.net/jpg/02/91/35/16/360_F_291351618_2ggRlHpK6pSwjUNtgMqhdaYliUYA5Jox.jpg",
+    "price": 150,
+    "discount": 200
+  },
+  {
+    "id":23,
+    "name": "Eggs",
+    "src": "https://m.media-amazon.com/images/I/31tbuj9qMgL.jpg",
+    "price": 10,
+    "discount": 15
+  },
+  {
+    "id":24,
+    "name": "Beef",
+    "src": "https://onedaycart.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/e/beef_3.jpg",
+    "price": 500,
+    "discount": 550
+  },
+  {
+    "id":25,
+    "name": "Pork",
+    "src": "https://5.imimg.com/data5/SELLER/Default/2022/11/LH/BJ/NN/163340884/pork-500x500.webp",
+    "price": 80,
+    "discount": 100
+  },
+  {
+    "id":26,
+    "name": "Quail",
+    "src": "https://ik.imagekit.io/dunzo/1615717459552_variant_5dce9482783484278f14fcff_1.jpg?tr=w-436,h-436,cm-pad_resize",
+    "price": 100,
+    "discount": 120
+  },
+  {
+    "id":27,
+    "name": "Rabbit",
+    "src": "https://media.istockphoto.com/id/1146299339/photo/raw-meat-rabbit.jpg?s=612x612&w=0&k=20&c=Ozu2oqc3WZKrlRzt6OjmtuOo6J-ISL8XDM-0c_jbM2I=",
+    "price": 600,
+    "discount": 650
+  },
+  {
+    "id":28,
+    "name": "Camel",
+    "src": "https://res.cloudinary.com/perkchops/image/upload/v1659642929/ingredients/202274/zjbhci3wju4nvukahwlt.png",
+    "price": 2000,
+    "discount": 2500
+  },
+  {
+    "id":29,
+    "name": "Duck",
+    "src": "https://t4.ftcdn.net/jpg/05/42/79/25/360_F_542792538_MnebBNUiMeSaPCws0PUfkGoTHU0ZR4Jp.jpg",
+    "price": 200,
+    "discount": 250
   }
   ]
 }
