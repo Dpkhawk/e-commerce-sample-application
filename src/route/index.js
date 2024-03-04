@@ -9,6 +9,8 @@ import Products from "../component/products/productsPage";
 import DashBoard from "../component/home-page/dashboard";
 import ForgotPassword from "../component/forgot-password/ForgotPassword";
 import Footer from "../component/footer/footer";
+import Cart from "../component/cart/cart";
+
 
 export const LevelContext = createContext();
 
@@ -50,6 +52,7 @@ export default function Router() {
             }
           ></Route>
           <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path='/cart' element={<Cart/>}></Route>
           <Route path='/footer' element={<Footer/>}></Route>
         </Routes>
       </BrowserRouter>

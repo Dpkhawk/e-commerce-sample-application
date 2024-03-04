@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 
 import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
@@ -7,26 +7,23 @@ import Footer from "../footer/footer";
 export default function Products() {
   const [vegData, setVegData] = useState([]);
   const [filter, setFilter] = useState("fruits");
-  const[selectedItems,setSelectedItems]=useState([])
-
+  const[selectedItems,setSelectedItems]=useState([{}])
+  let price=0
   useEffect(() => {
     fetch(`http://localhost:3001/${filter}`)
       .then((response) => response.json())
       .then((data) => setVegData([...data]));
   }, [filter]);
+
   function functionToCart(obj){
-    selectedItems.map((element)=>
-    {
-      Object.assign(element,obj)
-      setSelectedItems([...selectedItems,element])
-      if(Object.is(element.name,obj.name)){
-        setSelectedItems([...selectedItems,element])
+    if(selectedItems===null)
+    setSelectedItems([...selectedItems,obj]);
+    selectedItems.map((e,i)=>{
+    if((e.name===obj.name)){
+        selectedItems.splice(i,1)
       }
-      else{
-        setSelectedItems([...selectedItems,obj])
-      }
-    })
-    
+      setSelectedItems([...selectedItems,obj])
+    }) 
   }
   return (
     <div className="displayProducts">
@@ -37,11 +34,12 @@ export default function Products() {
         <div className="productsDisplay">
           {vegData.map((vegetables) => {
             return (
-              <ProductItemView products={vegetables} key={vegetables.id} functionToCart={(obj)=>functionToCart(obj)} />
+              <div key={vegetables.id}>
+              <ProductItemView products={vegetables} key={vegetables.id} functionToCart={(obj)=>functionToCart(obj)}  />
+              </div>
             );
           })}
         </div>
-        {console.log(selectedItems)}
       </div>
       <div className="block3">
         <div className="searchFoodCategory">
@@ -61,13 +59,16 @@ export default function Products() {
         </div>
         <div className="orderedItems">
           <div><b>Selected Products and their quantity:</b></div>
-          {selectedItems.map((element)=>{
-            <div>Total Price: <input value={element.price} disabled/></div>
+          {selectedItems.map((element,i)=>{
+            if(i===0)
+             return null;
+            price+=element.price;
           return(<>
           <ul>
-            <li>{element.name}  Kgs: <input value={element.kgs} disabled/> </li>
+            <li>{element.name}  Kgs: <input id="itemsSelected" value={element.kgs} disabled/>  Price:<input id="itemsSelected" value={element.price}  disabled/></li>
           </ul>
           </>)})}
+          <div>Total Price: <input id="itemsSelected"  value={price} disabled/></div>
         </div>
       </div>
       <div className="block4">

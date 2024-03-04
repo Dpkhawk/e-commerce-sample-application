@@ -11,11 +11,11 @@ export default function NavigationBar() {
         <Link to={"/"} className="homeLinks">
           Home
         </Link>
-        <Link className="homeLinks">About</Link>
+        <Link className="homeLinks" to={"/cart"}>Cart</Link>
         <Link className="homeLinks" to={"/products"}>
           Products
         </Link>
-        <Link className="homeLinks" to={'./footer'}>Contact</Link>
+        <Link className="homeLinks" to={'/footer'}>Contact</Link>
       </div>
       <input
         className="searchBar"

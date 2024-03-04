@@ -1,24 +1,28 @@
+import { useEffect, useState } from "react";
+
+
+import CartItemView from "./cartItemsView";
+
 export default function Cart() {
-  const arr = [1, 2, 3, 4, 5];
+  const [cartData, setCartData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3005/data")
+      .then((respone) => respone.json())
+      .then((data) => setCartData([...data]));
+  }, []);
+
   return (
     <>
       <div className="cartOuter">
         <div className="mainContent">
-          <div className="innerCart">
-            <img
-              className="cartImage"
-              src="https://t4.ftcdn.net/jpg/05/42/79/25/360_F_542792538_MnebBNUiMeSaPCws0PUfkGoTHU0ZR4Jp.jpg"
-              alt="capsicum"
-            />
-            <div className="cartPriceDiscount">
-              <p>Rabbit</p>
-              <p>₹50₹172</p>
-            </div>
-        
-            <input className="cartInput" type="text" disabled/>
-            <div ><p className="cartPrice">price</p></div>
-          </div>
-          
+          {cartData.map((product) => {
+            return (
+              <div>
+                <CartItemView products={product} />
+              </div>
+            );
+          })}
         </div>
         <div className="leftSideContent"></div>
         <div className="rightSideContent"></div>

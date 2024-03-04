@@ -10,13 +10,10 @@ export default function ForgotPassword() {
         if (data.id === Name) {
           const Mail = prompt("Enter the mail");
           if (data.email === Mail) {
-            const password = prompt("Enter the new password");
-            // const newValue={password:password}
-            // data.password=password;
-            // const newObj={...Name,password:password}
+            const newPassword = prompt("Enter the new password");
             fetch(`http://localhost:3003/registers/${Name}`, {
-              // method:PUT ,
-             
+               method:"PUT",
+              body:JSON.stringify({...data,password:newPassword})
               
             });
           }

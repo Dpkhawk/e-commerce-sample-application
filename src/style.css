@@ -50,18 +50,18 @@ nav{
     padding:20px;
     background-color:white;
  }
- .products-img{
+ .productsImg{
     height: 5cm;
     width: 5cm;
     padding: 20px;
  }
- .products-text{
+ .productsText{
   padding-left: 7px;
 }
 .inputQuantity{
     width: 3cm;
 }
-.products-button{
+.productsButton{
     width: 5cm;
     padding: 10px;
     align-items: center;
@@ -69,7 +69,7 @@ nav{
     background-color: white;
     border-radius: 5px;
 }
-.products-button:hover{
+.productsButton:hover{
     background-color: rgb(214, 75, 103);
 }
 
@@ -280,6 +280,7 @@ fieldset{
 .mainContent{
     grid-area: mainContent;
     width: 100%;
+    background-color: white;
 }
 .rightSideContent{
     grid-area: rightSideContent;
@@ -296,8 +297,37 @@ fieldset{
 }
 .cartPrice{
    
-    margin-left: 300px;
+    margin-left: 100px;
     margin-top: 90px; 
-   border: 1px solid;
   
 }
+#itemsSelected{
+    width: 1cm;
+    align-content: center;
+}
+.productsAdded{
+    width: 5cm;
+    padding: 10px;
+    align-items: center;
+    font-size: larger;
+    background-color: rgb(170, 236, 150);
+    border-radius: 5px;
+}
+.buttonDelete{
+   height: 50px;
+   width: 90px;
+   padding: 10px;
+   margin-left: 30px;
+   margin-top: 90px;
+   font-size: larger;
+   background-color: rgb(230, 94, 94);
+}
+.buttonEdit{
+    height: 50px;
+    width: 90px;
+    padding: 10px;
+    margin-left: 30px;
+    margin-top: 90px;
+    font-size: larger;
+    background-color:rgb(136, 236, 136);
+ }
