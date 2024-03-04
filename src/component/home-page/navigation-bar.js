@@ -5,6 +5,7 @@ import { LevelContext } from "../../route";
 
 export default function NavigationBar() {
   const newValue = useContext(LevelContext);
+  
   return (
     <nav>
       <div className="FloatLeft">

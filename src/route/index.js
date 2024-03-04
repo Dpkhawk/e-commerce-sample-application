@@ -3,11 +3,11 @@ import { createContext } from "react";
 import { useState } from "react";
 
 
-import LoginPage from "../component/login/UserLogin";
-import SignUp from "../component/signup/sign-up-page";
-import Products from "../component/products/productsPage";
+import LoginPage from "../component/login/user-login";
+import SignUp from "../component/signup/signup-page";
+import Products from "../component/products/products-page";
 import DashBoard from "../component/home-page/dashboard";
-import ForgotPassword from "../component/forgot-password/ForgotPassword";
+import ForgotPassword from "../component/forgot-password/forgot-password";
 import Footer from "../component/footer/footer";
 import Cart from "../component/cart/cart";
 

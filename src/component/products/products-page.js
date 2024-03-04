@@ -9,6 +9,7 @@ export default function Products() {
   const [filter, setFilter] = useState("fruits");
   const[selectedItems,setSelectedItems]=useState([{}])
   let price=0
+  
   useEffect(() => {
     fetch(`http://localhost:3001/${filter}`)
       .then((response) => response.json())

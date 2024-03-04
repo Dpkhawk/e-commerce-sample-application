@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-import CartItemView from "./cartItemsView";
+import CartItemView from "./cart-items-view";
 
 export default function Cart() {
   const [cartData, setCartData] = useState([]);

@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-// import { LevelContext } from "../../route";
+import {  useState } from "react";
 
 
 export default function ProductItemView({products,functionToCart}) {
@@ -7,7 +6,6 @@ export default function ProductItemView({products,functionToCart}) {
   const [weight, setWeight] = useState(1);
   const[cart,setCart]=useState(true);
 
-  // const value=useContext(LevelContext)
 
   function handleChange(e){
        setWeight(e.target.value);

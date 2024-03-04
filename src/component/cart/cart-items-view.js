@@ -1,17 +1,22 @@
 import { useState } from "react"
+
 export default function CartItemView({products}){
+
     const[weight,setWeight]=useState(products.kgs)
+
     function handleClick(id){
         fetch(`http://localhost:3005/data/${id}`,{
           method:"DELETE"
         })
     }
+
     function handleChange(products){
         fetch(`http://localhost:3005/data/${products.id}`,{
             method:"PUT",
             body:JSON.stringify({...products,kgs:weight})
           })
     }
+    
     return(<>
             <div className="innerCart" key={products.id}>
             <img

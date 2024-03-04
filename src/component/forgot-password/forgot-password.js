@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function ForgotPassword() {
   const [Name, setName] = useState("");
-  // const[password,setPassword]=useState({})
+
   function handleSubmit(e) {
     fetch(`http://localhost:3003/registers/${Name}`)
       .then((response) => response.json())
@@ -20,6 +20,7 @@ export default function ForgotPassword() {
         }
       });
   }
+  
   return (
     <>
       <input type="text" onChange={(e) => setName(e.target.value)} />

@@ -7,6 +7,7 @@ export default function LoginPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
     async function showCredentials() {
@@ -21,6 +22,7 @@ export default function LoginPage() {
     }
     showCredentials();
   }
+  
   return (
     <>
       <form className="forms" onSubmit={(e) => handleSubmit(e)}>
