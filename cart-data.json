@@ -1,20 +1,3 @@
 {
-  "data": [
-    {
-      "id": "11",
-      "name": "Guava",
-      "src": "https://fruitboxco.com/cdn/shop/products/asset_19_grande.jpg?v=1594383262",
-      "price": 18,
-      "discount": 22,
-      "kgs": "45"
-    },
-    {
-      "id": "19",
-      "name": "Dragon Fruit",
-      "src": "https://5.imimg.com/data5/HX/OR/MY-3040698/dragon-fruit.jpg",
-      "price": 120,
-      "discount": 140,
-      "kgs": "67"
-    }
-  ]
+  "data": []
 }

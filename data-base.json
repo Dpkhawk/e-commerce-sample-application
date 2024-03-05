@@ -7,7 +7,7 @@
       "mobileNumber": "7598686691",
       "gender": "Male",
       "address": "Siruseri,chennai",
-      "password": "Abi@12",
+      "password": "abi@12",
       "zipcode": "639005",
       "district": "Karur"
     },
@@ -44,6 +44,17 @@
       "password": "deepak@12",
       "zipcode": "7634",
       "district": "Chennai"
+    },
+    {
+      "id": "Prakash",
+      "email": "prakash@gmail.com",
+      "dob": "2002-05-05",
+      "mobileNumber": "988776723",
+      "gender": "Male",
+      "address": "pollachi",
+      "password": "prakash@12",
+      "zipcode": "67123",
+      "district": "Erode"
     }
   ]
 }

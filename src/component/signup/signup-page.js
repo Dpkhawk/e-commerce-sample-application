@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 
 export default function SignUp() {
-
+  
+  const[district,setDistrict]=useState(["Chennai","Karur","Trichy","Erode","Namakkal"])
   const[arrayOfItems,setArrayOfItems]=useState({
       id:'',
       email:'',
@@ -12,7 +15,7 @@ export default function SignUp() {
       address:'',
       password:'',
       zipcode:'',
-      district:''
+      district
   })
   const[confirmPassword,setConfirmPassword]=useState()
   const usenavigation = useNavigate();
@@ -31,6 +34,7 @@ export default function SignUp() {
 
   return (
     <>
+    <div className="outerSignUp">
       <div className="signUp">
         <fieldset>
           <legend>SignUp</legend>
@@ -61,8 +65,36 @@ export default function SignUp() {
               type="email"
             />
             <br />
+            <div className="password">
+              <label for="confirmPassword" className="signUpLabel ">
+                Confirm Password
+              </label> 
+              <br />
+              <input
+                className="signUpInput rightMove"
+                required
+                placeholder="re-enter password"
+                type="password"
+                id="confirmPassword"
+                onChange={(e) => setArrayOfItems({...arrayOfItems,password:e.target.value})}
+              />
+              <br />
+            </div>
+            <label for="password" className="signUpLabel">
+              Password
+            </label>
+            <br />
+            <input
+              className="signUpInput"
+              required
+              placeholder="enter password"
+              type="password"
+              id="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <br />
             <div className="dob">
-              <label for="DOB" className="signUpLabel">
+              <label for="DOB" className="signUpLabel ">
                 Date Of Birth
               </label>
               <br />
@@ -70,7 +102,7 @@ export default function SignUp() {
                 type="date"
                 required
                 onChange={(e) => setArrayOfItems({...arrayOfItems,dob:e.target.value})}
-                className="signUpInput"
+                className="signUpInput rightMove"
                 id="DOB"
               />
               <br />
@@ -97,6 +129,7 @@ export default function SignUp() {
                 type="radio"
                 id="male"
                 required
+                className="genderSelection"
                 name="gender"
                 value="Male"
                 onChange={(e) => setArrayOfItems({...arrayOfItems,gender:e.target.value})}
@@ -105,6 +138,7 @@ export default function SignUp() {
               <input
                 type="radio"
                 name="gender"
+                className="genderSelection"
                 required
                 id="female"
                 value="Female"
@@ -125,57 +159,34 @@ export default function SignUp() {
               onChange={(e) => setArrayOfItems({...arrayOfItems,address:e.target.value})}
             />
             <br />
-            <div className="password">
-              <label for="confirmPassword" className="signUpLabel">
-                Confirm Password
-              </label>
-              <br />
-              <input
-                className="signUpInput"
-                required
-                placeholder="re-enter password"
-                type="password"
-                id="confirmPassword"
-                onChange={(e) => setArrayOfItems({...arrayOfItems,password:e.target.value})}
-              />
-              <br />
-            </div>
-            <label for="password" className="signUpLabel">
-              Password
-            </label>
-            <br />
-            <input
-              className="signUpInput"
-              required
-              placeholder="enter password"
-              type="password"
-              id="password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <br />
             <select
               className="districtSelection"
               required
               onChange={(e) => setArrayOfItems({...arrayOfItems,district:e.target.value})}
             >
-              <option selected>District</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Karur">Karur</option>
-              <option value="Trichy">Trichy</option>
-              <option value="Erode">Erode</option>
-              <option value="Namakkal">Namakkal</option>
+              {
+                district.map((district)=>{
+                  return(<>
+                  <option value={district}>{district}</option>
+                  </>)
+                })
+              }
             </select>
             <input
-              className="zipcode"
+              className="zipcode rightMove"
               required
               type="text"
               placeholder="Zip Code"
               onChange={(e) => setArrayOfItems({...arrayOfItems,zipcode:e.target.value})}
             />
             <br />
-            <button className="signUpButton">Submit</button>
+            <button className="signUpButton">Sign Up</button><br/>
+            <Link to={"/loginPage"} className="linkToLogin">Already User?LogIn</Link><br/>
+          
+            
           </form>
         </fieldset>
+      </div>
       </div>
     </>
   );

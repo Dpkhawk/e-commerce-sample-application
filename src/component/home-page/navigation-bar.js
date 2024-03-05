@@ -10,15 +10,14 @@ export default function NavigationBar() {
     <nav>
       <div className="FloatLeft">
         <Link to={"/"} className="homeLinks">
-          Home
+          <b>Fresh Kart</b>
         </Link>
         <Link className="homeLinks" to={"/cart"}>Cart</Link>
         <Link className="homeLinks" to={"/products"}>
           Products
         </Link>
-        <Link className="homeLinks" to={'/footer'}>Contact</Link>
       </div>
-      <input
+      {/* <input
         className="searchBar"
         placeholder="search items"
         type="search"
@@ -26,7 +25,7 @@ export default function NavigationBar() {
         onChange={(e) =>
           newValue.setSearchItemsFunction.setSearchItems(e.target.value)
         }
-      />
+      /> */}
       <div className="LogIn">
         <Link to={"/signup"} className="homeLinks">
           SignUp
