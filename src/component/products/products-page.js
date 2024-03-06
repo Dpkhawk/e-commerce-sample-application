@@ -1,31 +1,41 @@
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 
 import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
+import ProductSideBar from "./product-side-bar";
 
-export default function Products() {
-  const [vegData, setVegData] = useState([]);
-  const [filter, setFilter] = useState("fruits");
-  const[selectedItems,setSelectedItems]=useState([{}])
-  let price=0
-  
+const Products = () => {
+  const [Data, setData] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([{}]);
+  const [allProducts, setAllProducts] = useState([]);
+
   useEffect(() => {
-    fetch(`http://localhost:3001/${filter}`)
+    fetch(`http://localhost:3006/products`)
       .then((response) => response.json())
-      .then((data) => setVegData([...data]));
-  }, [filter]);
+      .then((data) => {
+        setData([...data]);
+        setAllProducts([...data]);
+      });
+  }, []);
 
-  function functionToCart(obj){
-    if(selectedItems===null)
-    setSelectedItems([...selectedItems,obj]);
-    selectedItems.map((e,i)=>{
-    if((e.name===obj.name)){
-        selectedItems.splice(i,1)
+  const handleFilter = (filter) => {
+    if (filter === "all") {
+      setData([...allProducts]);
+    } else {
+      setData(allProducts.filter((product) => product.category === filter));
+    }
+  };
+
+  const functionToCart = (obj) => {
+    if (selectedItems === null) setSelectedItems([obj]);
+    selectedItems.map((e, i) => {
+      if (e.name === obj.name) {
+        selectedItems.splice(i, 1);
       }
-      setSelectedItems([...selectedItems,obj])
-    }) 
-  }
+      setSelectedItems([...selectedItems, obj]);
+    });
+  };
   return (
     <div className="displayProducts">
       <div className="block1">
@@ -33,10 +43,14 @@ export default function Products() {
       </div>
       <div className="block2">
         <div className="productsDisplay">
-          {vegData.map((vegetables) => {
+          {Data.map((vegetables) => {
             return (
               <div key={vegetables.id}>
-              <ProductItemView products={vegetables} key={vegetables.id} functionToCart={(obj)=>functionToCart(obj)}  />
+                <ProductItemView
+                  products={vegetables}
+                  key={vegetables.id}
+                  functionToCart={(obj) => functionToCart(obj)}
+                />
               </div>
             );
           })}
@@ -49,27 +63,22 @@ export default function Products() {
           </p>
           <select
             className="selectFilter"
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={(e) => handleFilter(e.target.value)}
           >
-            <option selected value={"fruits"}>
-              Fruits
+            <option selected value={"all"}>
+              All
             </option>
-            <option value={"Vegetables"}>Vegetables</option>
-            <option value={"Non-Veg"}>Meats and Eggs</option>
+            <option value={"vegetables"}>Vegetables</option>
+            <option value={"fruits"}>Fruits</option>
+
+            <option value={"meats"}>Meats and Eggs</option>
           </select>
         </div>
         <div className="orderedItems">
-          <div><b>Selected Products and their quantity:</b></div>
-          {selectedItems.map((element,i)=>{
-            if(i===0)
-             return null;
-            price+=element.price;
-          return(<>
-          <ul>
-            <li>{element.name}  Kgs: <input id="itemsSelected" value={element.kgs} disabled/>  Price:<input id="itemsSelected" value={element.price}  disabled/></li>
-          </ul>
-          </>)})}
-          <div>Total Price: <input id="itemsSelected"  value={price} disabled/></div>
+          <div>
+            <b>Selected Products and their quantity:</b>
+          </div>
+          <ProductSideBar selectedItems={selectedItems} />
         </div>
       </div>
       <div className="block4">
@@ -77,4 +86,5 @@ export default function Products() {
       </div>
     </div>
   );
-}
+};
+export default Products;

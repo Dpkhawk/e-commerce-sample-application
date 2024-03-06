@@ -1,57 +1,89 @@
-import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router";
 
 import NavigationBar from "./navigation-bar";
-import ProductItemView from "../products/product-item-view";
 import Footer from "../footer/footer";
-import Cart from "../../assests/cart.jpeg"
-import { useNavigate } from "react-router";
-export default function DashBoard() {
-  const [productData, setProductData] = useState([]);
-  const navigation = useNavigate()
-  useEffect(() => {
-    fetch("http://localhost:3004/homePage")
-      .then((response) => response.json())
-      .then((data) => setProductData(data));
-  }, []);
+import Carouseal2 from "../../assests/carouseal2.jpeg";
+import Cart from "../../assests/carouseal1.jpeg";
+import Carouseal3 from "../../assests/carouseal3.png";
+
+const DashBoard = () => {
+  const navigation = useNavigate();
   const handleClick = () => {
-    navigation('/products')
-  }
+    navigation("/products");
+  };
   return (
     <>
       <NavigationBar />
-      {/* <div className="items">
-        {productData.map((products) => {
-          return <ProductItemView products={products} key={products.id} />;
-        })}
-      </div> */}
-      <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+      <div
+        id="carouselExampleIndicators"
+        className="carousel slide"
+        data-ride="carousel"
+      >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="d-block w-100" src={Cart} alt="First slide" />
-            <div class="carousel-caption d-none d-md-block">
-
-              <button type="button" class="btn btn-success" onClick={handleClick}>View Products</button>
+            <img className="d-block w-100" src={Carouseal2} alt="First slide" />
+            <div className="carousel-caption d-none d-md-block">
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={handleClick}
+              >
+                View Products
+              </button>
             </div>
           </div>
           <div className="carousel-item">
             <img className="d-block w-100" src={Cart} alt="Second slide" />
-
-            <div class="carousel-caption d-none d-md-block">
-              <button type="button" class="btn btn-success" onClick={handleClick}>View Products</button>
+            <div className="carousel-caption d-none d-md-block">
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={handleClick}
+              >
+                View Products
+              </button>
             </div>
           </div>
           <div className="carousel-item">
-            <img className="d-block w-100" src={Cart} alt="Third slide" />
-            <div class="carousel-caption d-none d-md-block">
-
-              <button type="button" class="btn btn-success" onClick={handleClick}>View Products</button>
+            <img className="d-block w-100" src={Carouseal3} alt="Third slide" />
+            <div className="carousel-caption d-none d-md-block">
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={handleClick}
+              >
+                View Products
+              </button>
             </div>
           </div>
         </div>
+        <a
+          className="carousel-control-prev"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a
+          className="carousel-control-next"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span classN="sr-only">Next</span>
+        </a>
       </div>
       <Footer />
     </>
   );
-}
-
+};
+export default DashBoard;

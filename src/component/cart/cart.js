@@ -1,42 +1,60 @@
 import { useEffect, useState } from "react";
 
+import NavigationBar from "../home-page/navigation-bar";
 
 import CartItemView from "./cart-items-view";
 
-export default function Cart() {
+const Cart = () => {
   const [cartData, setCartData] = useState([]);
-  const[price,setPrice]=useState(0);
-  const[change,setChange]=useState(true)
-  let prices=0
+  const [change, setChange] = useState(true);
+  const [price, setPrice] = useState(0);
+  var prices = 0;
   useEffect(() => {
     fetch("http://localhost:3005/data")
       .then((respone) => respone.json())
       .then((data) => setCartData([...data]));
   }, [change]);
-  function handleClick() {
-    cartData.map((product)=>
-    setPrice(p=>p+(product.kgs*product.price)))
-    //  prices+=(product.kgs*product.price))
-    
-    alert('You\'ve bought products worth of '+price)
-    // prices=0;
-  }
+  const handleInputChange = (weight, totalPrice) => {
+    prices += weight * totalPrice;
+    setPrice(prices);
+  };
+
   return (
     <>
       <div className="cartOuter">
+        <div className="navContent">
+          {" "}
+          <NavigationBar />
+        </div>
         <div className="mainContent">
           {cartData.map((product) => {
             return (
               <div>
-                <CartItemView products={product} change={change} setChange={()=>setChange(!change)} />
+                <CartItemView
+                  products={product}
+                  change={change}
+                  setChange={() => setChange(!change)}
+                  handleInputChanges={(weight, price) =>
+                    handleInputChange(weight, price)
+                  }
+                />
               </div>
             );
           })}
-         <button className="buyProducts" onClick={handleClick}>Buy Now</button>
+          <button type="button" class="btn btn-success buyProducts">
+            Buy Now
+          </button>
+          <p>
+            {" "}
+            <b>Total Price:</b>{" "}
+            <input className="totalInput" value={price} disabled={true} />
+          </p>
         </div>
         <div className="leftSideContent"></div>
         <div className="rightSideContent"></div>
       </div>
     </>
   );
-}
+};
+
+export default Cart;

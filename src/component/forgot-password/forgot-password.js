@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-export default function ForgotPassword() {
+const ForgotPassword = () => {
   const [Name, setName] = useState("");
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     fetch(`http://localhost:3003/registers/${Name}`)
       .then((response) => response.json())
       .then((data) => {
@@ -12,19 +12,19 @@ export default function ForgotPassword() {
           if (data.email === Mail) {
             const newPassword = prompt("Enter the new password");
             fetch(`http://localhost:3003/registers/${Name}`, {
-               method:"PUT",
-              body:JSON.stringify({...data,password:newPassword})
-              
+              method: "PUT",
+              body: JSON.stringify({ ...data, password: newPassword }),
             });
           }
         }
       });
-  }
-  
+  };
+
   return (
     <>
       <input type="text" onChange={(e) => setName(e.target.value)} />
       <button onClick={(e) => handleSubmit(e)}>Submit</button>
     </>
   );
-}
+};
+export default ForgotPassword;
