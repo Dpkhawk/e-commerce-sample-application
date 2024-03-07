@@ -9,7 +9,7 @@ const Products = () => {
   const [Data, setData] = useState([]);
   const [selectedItems, setSelectedItems] = useState([{}]);
   const [allProducts, setAllProducts] = useState([]);
-
+  const[searchItems,setSearchItems]=useState()
   useEffect(() => {
     fetch(`http://localhost:3006/products`)
       .then((response) => response.json())
@@ -18,7 +18,16 @@ const Products = () => {
         setAllProducts([...data]);
       });
   }, []);
-
+  const searchBar=(value)=>{
+    if(value===''){
+      setData(allProducts)
+    }
+    else{
+      setSearchItems(value)
+      const da=allProducts.filter((item)=>item.name.toLowerCase()===value.toLowerCase())
+      setData(da)
+    }
+  }
   const handleFilter = (filter) => {
     if (filter === "all") {
       setData([...allProducts]);
@@ -36,11 +45,13 @@ const Products = () => {
       setSelectedItems([...selectedItems, obj]);
     });
   };
+  const now=Date.now()
   return (
     <div className="displayProducts">
       <div className="block1">
-        <NavigationBar />
+        <NavigationBar value={true} setSearchItems={(value)=>searchBar(value)}/>
       </div>
+      {/* {console.log(searchItems)} */}
       <div className="block2">
         <div className="productsDisplay">
           {Data.map((vegetables) => {
@@ -50,6 +61,7 @@ const Products = () => {
                   products={vegetables}
                   key={vegetables.id}
                   functionToCart={(obj) => functionToCart(obj)}
+                  id={now}
                 />
               </div>
             );

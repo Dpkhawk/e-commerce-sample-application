@@ -1,16 +1,11 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { LevelContext } from "../../route";
+
 
 import FoodKart from "../../assests/food kart.png";
 
-const NavigationBar = () => {
-  const newValue = useContext(LevelContext);
+const NavigationBar = ({value,setSearchItems}) => {
+  
   const loginValue = sessionStorage.getItem("userId");
-
-  const handleDelete=()=>{
-    sessionStorage.removeItem("userId");
-  }
   return (
     <nav>
       <div className="FloatLeft">
@@ -26,15 +21,15 @@ const NavigationBar = () => {
           Products
         </Link>
       </div>
-      {/* <input
+      {value? <input
         className="searchBar"
         placeholder="search items"
-        type="search"
-        value={newValue.searchItemsValue.searchItems}
+        type="text"
+        // value={newValue.searchItemsValue.searchItems}
         onChange={(e) =>
-          newValue.setSearchItemsFunction.setSearchItems(e.target.value)
+          setSearchItems(e.target.value)
         }
-      /> */}
+      /> :null}
       <div className="LogIn">
         {loginValue ? null : (
           <Link to={"/signup"} className="homeLinks">
@@ -42,7 +37,7 @@ const NavigationBar = () => {
           </Link>
         )}
         {loginValue ? (
-          <Link to={"/loginPage"} onClick={handleDelete} className="homeLinks">
+          <Link to={"/loginPage"} onClick={()=>sessionStorage.removeItem()} className="homeLinks">
             LogOut
           </Link>
         ) : (

@@ -45,8 +45,9 @@ nav {
 }
 .searchBar {
   padding: 10px;
-  width: 10cm;
+  width: 12cm;
   margin-left: 15cm;
+  margin-top: 1cm;;
 }
 .items {
   display: flex;
@@ -239,9 +240,9 @@ fieldset {
 }
 .selectFilter {
   padding: 10px;
-  align-items: center;
-  background-color: rgb(148, 147, 145);
-  border-radius: 10px;
+  text-align: center;
+  width: 3cm;
+  height: 1cm;
 }
 
 .orderedItems div {
@@ -424,4 +425,26 @@ fieldset {
   width: 5cm;
   padding: 20px;
   margin-bottom: 10px;
+}
+
+.orderConfirm{
+  height: 3cm;
+  width: 3cm;
+  position: relative;
+  top: 10%;
+  left: 30%;
+}
+.orderconfirmed{
+  padding: 30px;
+  position: relative;
+  left: 42%;
+}
+.link{
+  font-size: larger;
+  position: relative;
+  padding: 20px;
+  left: 46%;
+}
+.link p{
+  padding-top: 20px;
 }

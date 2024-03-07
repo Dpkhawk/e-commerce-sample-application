@@ -1,17 +1,14 @@
 import "./style.css";
 import Router from "./route";
 
+import "bootstrap/dist/css/bootstrap.css";
 
-import 'bootstrap/dist/css/bootstrap.css';
-
-
-
-function App() {
+const App = () => {
   return (
     <>
       <Router />
     </>
   );
-}
+};
 
 export default App;

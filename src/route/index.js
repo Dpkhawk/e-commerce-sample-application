@@ -10,6 +10,7 @@ import Footer from "../component/footer/footer";
 import Cart from "../component/cart/cart";
 import LoginForm from "../component/login2/login-form";
 import ProductDetailView from "../component/products/product-detail-view";
+import BoughtPage from "../component/bought-page/bought-page";
 
 export const LevelContext = createContext();
 const Router = () => {
@@ -21,14 +22,9 @@ const Router = () => {
           <Route
             path="/"
             element={
-              <LevelContext.Provider
-                value={{
-                  searchItemsValue: { searchItems },
-                  setSearchItemsFunction: { setSearchItems },
-                }}
-              >
+              
                 <DashBoard />
-              </LevelContext.Provider>
+              
             }
           ></Route>
           {/* <Route
@@ -39,21 +35,19 @@ const Router = () => {
           <Route
             path="/products"
             element={
-              <LevelContext.Provider
-                value={{
-                  searchItemsValue: { searchItems },
-                  setSearchItemsFunction: { setSearchItems },
-                }}
-              >
+              
                 <Products />
-              </LevelContext.Provider>
+              
             }
-          />
+          >
+            <Route path=":id"></Route>
+          </Route>
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/loginPage" element={<LoginForm />} />
-          <Route path="/detailview" element={<ProductDetailView />} />
+          {/* <Route path="/product" element={<ProductDetailView />} /> */}
+          <Route path="/boughtpage" element={<BoughtPage />} />
         </Routes>
       </BrowserRouter>
     </>

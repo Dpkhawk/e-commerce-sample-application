@@ -4,11 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import ProductDetailView from "./product-detail-view";
 import { DetailContext } from "../../route";
 
-const ProductItemView = ({ products, functionToCart }) => {
+const ProductItemView = ({ products, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
-
+ const[cartData,setCartdata]=useState([])
   const navigation = useNavigate();
+ useEffect(()=>{
+  fetch("http://localhost:3005/data")
+  .then(response=>response.json())
+  .then(data=>setCartdata([...data]))
+ },[])
+
   const handleChange = (e) => {
     setWeight(e.target.value);
     functionToCart({
@@ -20,18 +26,38 @@ const ProductItemView = ({ products, functionToCart }) => {
 
   const handleClick = (cartProduct) => {
     setCart(false);
-    const cartObject = { ...cartProduct, kgs: weight };
+    cartData.map((firstElement)=>{
+      
+      if(((cartProduct.name===firstElement.name)&&(sessionStorage.getItem("userId")===firstElement.userName))){
+        
+        fetch(`http://localhost:3005/data/${firstElement.id}`,{
+          method:"DELETE",
+        });}})
+     
+    
+    const cartObject = {
+      ...cartProduct,
+      kgs: weight,
+      userName: sessionStorage.getItem("userId"),
+      id:`${id}`
+    };
+    console.log("ELSE");
     fetch("http://localhost:3005/data", {
       method: "POST",
       body: JSON.stringify(cartObject),
-    });
-  };
-  const handleDivClick = ({ products }) => {
-    navigation("/detailview", { products: products });
+    })
+  }
+
+  const handleDetailView = () => {
+    navigation(`/products`, { state: { id: products.id } });
   };
   return (
     <div className="products">
-      <div className="productsChild" key={products.id}>
+      <div
+        className="productsChild"
+        key={products.id}
+        onClick={() => handleDetailView()}
+      >
         <div>
           <img className="productsImg" src={products.src} alt={products.name} />
         </div>
@@ -67,5 +93,5 @@ const ProductItemView = ({ products, functionToCart }) => {
       </div>
     </div>
   );
-};
-export default ProductItemView;
+}
+export default ProductItemView

@@ -3,22 +3,33 @@ import { useEffect, useState } from "react";
 import NavigationBar from "../home-page/navigation-bar";
 
 import CartItemView from "./cart-items-view";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const [cartData, setCartData] = useState([]);
   const [change, setChange] = useState(true);
   const [price, setPrice] = useState(0);
   var prices = 0;
+  var value=[];
+  const navigation=useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:3005/data")
       .then((respone) => respone.json())
-      .then((data) => setCartData([...data]));
+      .then((data) => 
+      setCartData([...data])
+      );
+      
   }, [change]);
   const handleInputChange = (weight, totalPrice) => {
     prices += weight * totalPrice;
     setPrice(prices);
   };
 
+  const handleClick=()=>{
+     navigation('/boughtpage')
+  }
+    {value=cartData.filter((object)=>object.userName===sessionStorage.getItem("userId"))}
   return (
     <>
       <div className="cartOuter">
@@ -27,7 +38,7 @@ const Cart = () => {
           <NavigationBar />
         </div>
         <div className="mainContent">
-          {cartData.map((product) => {
+          {value.map((product) => {
             return (
               <div>
                 <CartItemView
@@ -41,7 +52,7 @@ const Cart = () => {
               </div>
             );
           })}
-          <button type="button" class="btn btn-success buyProducts">
+          <button type="button" class="btn btn-success buyProducts" onClick={handleClick}>
             Buy Now
           </button>
           <p>

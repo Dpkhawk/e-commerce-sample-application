@@ -1,31 +1,24 @@
 {
   "data": [
     {
-      "id": "0",
+      "id": "1709803822616",
       "name": "Carrot",
       "src": "https://www.jiomart.com/images/product/original/590000186/carrot-orange-500-g-product-images-o590000186-p590000186-0-202207291751.jpg?im=Resize=(1000,1000)",
       "price": 20,
       "discount": 75,
       "category": "vegetables",
-      "kgs": 1
+      "kgs": "6",
+      "userName": "Deepak Kumar P"
     },
     {
-      "id": "1",
-      "name": "Capsicum",
-      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
-      "price": 17,
-      "discount": 30,
-      "category": "vegetables",
-      "kgs": "2"
-    },
-    {
-      "id": "23",
-      "name": "Eggs",
-      "src": "https://m.media-amazon.com/images/I/31tbuj9qMgL.jpg",
-      "price": 10,
-      "discount": 15,
-      "category": "meats",
-      "kgs": "3"
+      "id": "1709808281980",
+      "name": "Apple",
+      "src": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
+      "price": 16,
+      "discount": 25,
+      "category": "fruits",
+      "kgs": "9",
+      "userName": "Deepak Kumar P"
     }
   ]
 }
