@@ -3,14 +3,14 @@ import { useState } from "react";
 const CartItemView = ({ products, setChange, handleInputChanges }) => {
   const [weight, setWeight] = useState(products.kgs);
 
-  const handleClick=(id)=>{
+  const handleClick = (id) => {
     fetch(`http://localhost:3005/data/${id}`, {
       method: "DELETE",
     });
     setChange();
   }
 
-  const handleChange=(products)=>{
+  const handleChange = (products) => {
     fetch(`http://localhost:3005/data/${products.id}`, {
       method: "PUT",
       body: JSON.stringify({ ...products, kgs: weight }),
@@ -19,7 +19,8 @@ const CartItemView = ({ products, setChange, handleInputChanges }) => {
   const totalChange = (e) => {
     setWeight(e.target.value);
   };
-  handleInputChanges(weight, products.price);
+  handleInputChanges(weight, products.price)
+
   return (
     <>
       <div className="innerCarts" key={products.id}>

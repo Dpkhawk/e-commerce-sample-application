@@ -1,21 +1,21 @@
-const ProductSideBar=({selectedItems})=>{
-    let price=0
-  return(<>
-  <table className="productSideBar">
-  {selectedItems.map((element, i) => {
-            if (i === 0) return null;
-            price += element.price;
-            return (
-              <>
-                    <tr><td>{element.name}</td><td>Kgs:<input id="itemsSelected" value={element.kgs} disabled /></td>{" "}
-                    <td>Price:<input id="itemsSelected" value={element.price} disabled /></td></tr>
-              </>
-            );
-          })}
-          <div>
-           <tr> <td><b>Total Price:</b> <input id="totalPrice" value={price} disabled /></td></tr>
-          </div>
-          </table>
+const ProductSideBar = ({ selectedItems }) => {
+  let price = 0
+  return (<>
+    <table className="productSideBar">
+      {selectedItems.map((element, i) => {
+        if (i === 0) return null;
+        price += element.price;
+        return (
+          <>
+            <tr><td>{element.name}</td><td>Kgs:<input id="itemsSelected" value={element.kgs} disabled /></td>{" "}
+              <td>Price:<input id="itemsSelected" value={element.price} disabled /></td></tr>
+          </>
+        );
+      })}
+      <div>
+        <tr> <td><b>Total Price:</b> <input id="totalPrice" value={price} disabled /></td></tr>
+      </div>
+    </table>
   </>)
 }
 export default ProductSideBar

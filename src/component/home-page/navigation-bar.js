@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 
-
 import FoodKart from "../../assests/food kart.png";
 
-const NavigationBar = ({value,setSearchItems}) => {
-  
+const NavigationBar = ({ value, setSearchItems }) => {
   const loginValue = sessionStorage.getItem("userId");
+
+  const handleChange = () => {
+    sessionStorage.removeItem("userId");
+  };
   return (
     <nav>
       <div className="FloatLeft">
@@ -21,15 +23,14 @@ const NavigationBar = ({value,setSearchItems}) => {
           Products
         </Link>
       </div>
-      {value? <input
-        className="searchBar"
-        placeholder="search items"
-        type="text"
-        // value={newValue.searchItemsValue.searchItems}
-        onChange={(e) =>
-          setSearchItems(e.target.value)
-        }
-      /> :null}
+      {value ? (
+        <input
+          className="searchBar"
+          placeholder="search items"
+          type="text"
+          onChange={(e) => setSearchItems(e.target.value)}
+        />
+      ) : null}
       <div className="LogIn">
         {loginValue ? null : (
           <Link to={"/signup"} className="homeLinks">
@@ -37,7 +38,7 @@ const NavigationBar = ({value,setSearchItems}) => {
           </Link>
         )}
         {loginValue ? (
-          <Link to={"/loginPage"} onClick={()=>sessionStorage.removeItem()} className="homeLinks">
+          <Link to={"/loginPage"} onClick={handleChange} className="homeLinks">
             LogOut
           </Link>
         ) : (

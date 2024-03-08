@@ -13,7 +13,6 @@ const LoginForm = () => {
       const data = await fetch(`http://localhost:3003/registers/${userName}`);
       const value = await data.json();
       if (value.id === userName && value.password === password) {
-        alert("login successful");
         sessionStorage.setItem("userId", userName);
         navigation("/");
       } else {

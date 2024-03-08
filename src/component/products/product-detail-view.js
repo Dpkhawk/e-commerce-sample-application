@@ -1,16 +1,19 @@
-// import {useHistory} from 'react-router'
-
-import { useParams } from "react-router"
 
 
- const ProductDetailView=(props)=>{
-  //  const history=useHistory() 
-  //   console.log(history)
-  const params=useParams()
-  console.log(params);
-   return(<>
-   <img src="..." alt='name'/>
-   <p>value</p>
+import { useLocation } from "react-router"
+
+
+const ProductDetailView = () => {
+
+   const location = useLocation()
+
+   const product = location.state.id;
+   return (<>
+      <div className="detailViewDiv">
+         <img src={product.src} alt={product.name} className="detailViewImage" />
+         <p><b>{product.name}</b></p>
+         <p><b>₹{product.price}</b>&nbsp;<strike>₹{product.discount}</strike></p>
+      </div>
    </>)
 }
 export default ProductDetailView

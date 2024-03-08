@@ -9,7 +9,6 @@ const Products = () => {
   const [Data, setData] = useState([]);
   const [selectedItems, setSelectedItems] = useState([{}]);
   const [allProducts, setAllProducts] = useState([]);
-  const[searchItems,setSearchItems]=useState()
   useEffect(() => {
     fetch(`http://localhost:3006/products`)
       .then((response) => response.json())
@@ -18,13 +17,12 @@ const Products = () => {
         setAllProducts([...data]);
       });
   }, []);
-  const searchBar=(value)=>{
-    if(value===''){
+  const searchBar = (value) => {
+    if (value === '') {
       setData(allProducts)
     }
-    else{
-      setSearchItems(value)
-      const da=allProducts.filter((item)=>item.name.toLowerCase()===value.toLowerCase())
+    else {
+      const da = allProducts.filter((item) => item.name.toLowerCase() === value.toLowerCase())
       setData(da)
     }
   }
@@ -42,14 +40,14 @@ const Products = () => {
       if (e.name === obj.name) {
         selectedItems.splice(i, 1);
       }
-      setSelectedItems([...selectedItems, obj]);
     });
+    setSelectedItems([...selectedItems, obj]);
   };
-  const now=Date.now()
+  const now = Date.now()
   return (
     <div className="displayProducts">
       <div className="block1">
-        <NavigationBar value={true} setSearchItems={(value)=>searchBar(value)}/>
+        <NavigationBar value={true} setSearchItems={(value) => searchBar(value)} />
       </div>
       {/* {console.log(searchItems)} */}
       <div className="block2">
@@ -58,7 +56,7 @@ const Products = () => {
             return (
               <div key={vegetables.id}>
                 <ProductItemView
-                  products={vegetables}
+                  product={vegetables}
                   key={vegetables.id}
                   functionToCart={(obj) => functionToCart(obj)}
                   id={now}
