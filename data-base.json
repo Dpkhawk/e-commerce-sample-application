@@ -55,6 +55,23 @@
       "password": "prakash@12",
       "zipcode": "67123",
       "district": "Erode"
+    },
+    {
+      "id": "Asfa",
+      "email": "asfa@gmail.com",
+      "dob": "2001-12-12",
+      "mobileNumber": "29384723846",
+      "gender": "Male",
+      "address": "navalue,chennai",
+      "password": "asfa@3",
+      "zipcode": "789456",
+      "district": [
+        "Chennai",
+        "Karur",
+        "Trichy",
+        "Erode",
+        "Namakkal"
+      ]
     }
   ]
 }

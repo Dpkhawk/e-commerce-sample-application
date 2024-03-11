@@ -3,7 +3,6 @@ const ProductSideBar = ({ selectedItems }) => {
   return (<>
     <table className="productSideBar">
       {selectedItems.map((element, i) => {
-        if (i === 0) return null;
         price += element.price;
         return (
           <>

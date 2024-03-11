@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
-import ProductDetailView from "./product-detail-view";
-import { DetailContext } from "../../route";
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
@@ -57,10 +55,10 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       <div
         className="productsChild"
         key={product.id}
-        onClick={() => handleDetailView(product)}
+       
       >
         <div>
-          <img className="productsImg" src={product.src} alt={product.name} />
+          <img className="productsImg" src={product.src} alt={product.name}  onClick={() => handleDetailView(product)} />
         </div>
         <br />
         <div className="productsContent">

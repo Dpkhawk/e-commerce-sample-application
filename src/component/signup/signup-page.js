@@ -30,7 +30,8 @@ const SignUp = () => {
       fetch("http://localhost:3003/registers", {
         method: "POST",
         body: JSON.stringify(arrayOfItems),
-      }).then(() => usenavigation("/loginPage"));
+      })
+       usenavigation("/loginPage");
     } else {
       alert("passwords are wrong");
     }

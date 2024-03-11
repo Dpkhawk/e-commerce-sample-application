@@ -7,7 +7,7 @@ import ProductSideBar from "./product-side-bar";
 
 const Products = () => {
   const [Data, setData] = useState([]);
-  const [selectedItems, setSelectedItems] = useState([{}]);
+  const [selectedItems, setSelectedItems] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:3006/products`)
@@ -35,9 +35,8 @@ const Products = () => {
   };
 
   const functionToCart = (obj) => {
-    if (selectedItems === null) setSelectedItems([obj]);
     selectedItems.map((e, i) => {
-      if (e.name === obj.name) {
+      if ((e.name === obj.name)||(e.price===0)) {
         selectedItems.splice(i, 1);
       }
     });
@@ -49,7 +48,6 @@ const Products = () => {
       <div className="block1">
         <NavigationBar value={true} setSearchItems={(value) => searchBar(value)} />
       </div>
-      {/* {console.log(searchItems)} */}
       <div className="block2">
         <div className="productsDisplay">
           {Data.map((vegetables) => {

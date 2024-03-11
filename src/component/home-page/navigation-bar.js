@@ -7,6 +7,7 @@ const NavigationBar = ({ value, setSearchItems }) => {
 
   const handleChange = () => {
     sessionStorage.removeItem("userId");
+    
   };
   return (
     <nav>
@@ -14,6 +15,7 @@ const NavigationBar = ({ value, setSearchItems }) => {
         <Link to={"/"} className="homeLinks">
           <img className="logoNav" src={FoodKart} alt="food kart" />
         </Link>
+       
         {loginValue ? (
           <Link className="homeLinks" to={"/cart"}>
             Cart

@@ -28,7 +28,7 @@ const Cart = () => {
   const handleClick = () => {
     navigation('/boughtpage')
   }
-  // {value=cartData.filter((object)=>object.userName===sessionStorage.getItem("userId"))}
+
   return (
     <>
       <div className="cartOuter">
