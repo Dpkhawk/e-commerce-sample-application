@@ -1,23 +1,13 @@
 {
   "data": [
     {
-      "id": "1709808281980",
-      "name": "Apple",
-      "src": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
-      "price": 16,
-      "discount": 25,
-      "category": "fruits",
-      "kgs": "2",
-      "userName": "Deepak Kumar P"
-    },
-    {
       "id": "1709814717341",
       "name": "Cauliflower",
       "src": "https://m.media-amazon.com/images/I/91EdPVzD99L._AC_UF1000,1000_QL80_.jpg",
       "price": 23,
       "discount": 26,
       "category": "vegetables",
-      "kgs": 1,
+      "kgs": "2",
       "userName": "Deepak Kumar P"
     },
     {

@@ -6,31 +6,31 @@ import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
 
 const Products = () => {
-  const [Data, setData] = useState([]);
-  const [selectedItems, setSelectedItems] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [filterProducts, setFilterProducts] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:3006/products`)
       .then((response) => response.json())
       .then((data) => {
-        setData([...data]);
+        setFilterProducts([...data]);
         setAllProducts([...data]);
       });
   }, []);
   const searchBar = (value) => {
     if (value === '') {
-      setData(allProducts)
+      setAllProducts(filterProducts)
     }
     else {
-      const da = allProducts.filter((item) => item.name.toLowerCase() === value.toLowerCase())
-      setData(da)
+      const da = filterProducts.filter((item) => item.name.toLowerCase() === value.toLowerCase())
+      setAllProducts(da)
     }
   }
   const handleFilter = (filter) => {
     if (filter === "all") {
-      setData([...allProducts]);
+      setAllProducts([...filterProducts]);
     } else {
-      setData(allProducts.filter((product) => product.category === filter));
+      setAllProducts(filterProducts.filter((product) => product.category === filter));
     }
   };
 
@@ -50,7 +50,7 @@ const Products = () => {
       </div>
       <div className="block2">
         <div className="productsDisplay">
-          {Data.map((vegetables) => {
+          {allProducts.map((vegetables) => {
             return (
               <div key={vegetables.id}>
                 <ProductItemView

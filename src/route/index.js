@@ -15,15 +15,15 @@ const Router = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DashBoard />}></Route>
-          <Route path="/SignUp" element={<SignUp />}></Route>
-          <Route path="/products" element={<Products />}></Route>
-          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/footer" element={<Footer />}></Route>
-          <Route path="/loginPage" element={<LoginForm />}></Route>
-          <Route path="/product" element={<ProductDetailView />}></Route>
-          <Route path="/boughtpage" element={<BoughtPage />}></Route>
+          <Route path="/" element={<DashBoard />}/>
+          <Route path="/SignUp" element={<SignUp />}/>
+          <Route path="/products" element={<Products />}/>
+          <Route path="/forgotpassword" element={<ForgotPassword />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="/footer" element={<Footer />}/>
+          <Route path="/loginPage" element={<LoginForm />}/>
+          <Route path="/product" element={<ProductDetailView />}/>
+          <Route path="/boughtpage" element={<BoughtPage />}/>
         </Routes>
       </BrowserRouter>
     </>
