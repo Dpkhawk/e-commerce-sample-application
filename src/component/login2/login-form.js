@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const LoginForm = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -10,8 +10,8 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const showCredentials = async () => {
-      const data = await fetch(`http://localhost:3003/registers/${userName}`);
-      const value = await data.json();
+      const result = await axios.get(`http://localhost:3003/registers/${userName}`);
+      const value = result.data;
       if (value.id === userName && value.password === password) {
         sessionStorage.setItem("userId", userName);
         navigation("/");

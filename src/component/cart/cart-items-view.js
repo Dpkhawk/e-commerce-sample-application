@@ -1,13 +1,14 @@
+import axios from "axios";
 import { useState } from "react";
 
 const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
   const [weight, setWeight] = useState(products.kgs);
 
   const handleClick = (id) => {
-    fetch(`http://localhost:3005/data/${id}`, {
-      method: "DELETE",
-    });
-   
+    // fetch(`http://localhost:3005/data/${id}`, {
+    //   method: "DELETE",
+    // });
+     axios.delete(`http://localhost:3005/data/${id}`)
      data.map((element,index)=>{
       if(element.id===id){
         console.log('delete');
@@ -19,11 +20,16 @@ const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
   }
 
   const handleChange = (products) => {
-    fetch(`http://localhost:3005/data/${products.id}`, {
-      method: "PUT",
-      body: JSON.stringify({ ...products, kgs: weight }),
-    });
-  }
+  //   fetch(`http://localhost:3005/data/${products.id}`, {
+  //     method: "PUT",
+  //     body: JSON.stringify({ ...products, kgs: weight }),
+  //   });
+  
+     axios.put(`http://localhost:3005/data/${products.id}`,{
+    
+        ...products,kgs:weight
+      
+    })}
   const totalChange = (e) => {
     setWeight(e.target.value);
   };
@@ -70,5 +76,5 @@ const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
       </div>
     </>
   );
-};
-export default CartItemView;
+}
+export default CartItemView

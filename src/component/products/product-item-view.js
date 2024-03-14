@@ -1,17 +1,22 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import {  useNavigate } from "react-router-dom";
-
+import fetchData from "../data-fetching/fetching";
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
   const [cartData, setCartdata] = useState([])
   const navigation = useNavigate();
+    const url="http://localhost:3005/data"
+    
   useEffect(() => {
-    fetch("http://localhost:3005/data")
-      .then(response => response.json())
-      .then(data => setCartdata([...data]))
-  }, [])
+    const fetchdata=async()=>{
+      const result= await fetchData(url)
+      setCartdata([...result])
+    }
+    fetchdata()
+  }, []);
 
   const handleChange = (e) => {
     setWeight(e.target.value);
@@ -28,9 +33,8 @@ const ProductItemView = ({ product, functionToCart, id }) => {
 
       if (((cartProduct.name === firstElement.name) && (sessionStorage.getItem("userId") === firstElement.userName))) {
 
-        fetch(`http://localhost:3005/data/${firstElement.id}`, {
-          method: "DELETE",
-        });
+        axios.delete(`http://localhost:3005/data/${firstElement.id}`)
+         
       }
     })
 
@@ -41,10 +45,11 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       userName: sessionStorage.getItem("userId"),
       id: `${id}`
     };
-    fetch("http://localhost:3005/data", {
-      method: "POST",
-      body: JSON.stringify(cartObject),
-    })
+    // fetch("http://localhost:3005/data", {
+    //   method: "POST",
+    //   body: JSON.stringify(cartObject),
+    // })
+    axios.post("http://localhost:3005/data",{...cartObject})
   }
 
   const handleDetailView = (products) => {

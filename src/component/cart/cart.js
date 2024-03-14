@@ -5,25 +5,27 @@ import NavigationBar from "../home-page/navigation-bar";
 
 import CartItemView from "./cart-items-view";
 import useFetchData from "../data-fetching/fetching";
+import fetchData from "../data-fetching/fetching";
 
 
 const Cart = () => {
   const navigation=useNavigate()
-  if(!sessionStorage.getItem("userId")){
-    navigation("/")
-  }
+  // if(!sessionStorage.getItem("userId")){
+  //   navigation("/")
+  // }
+  const url="http://localhost:3005/data"
   const [cartData,setCartData] = useState([]);
   const [price, setPrice] = useState(0);
   var prices = 0;
-  // const navigation = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:3005/data")
-      .then((respone) => respone.json())
-      .then((data) =>
-        setCartData(data.filter((items) => items.userName === sessionStorage.getItem("userId")))
-      );
-  },[]);
+
+  useEffect(()=>{
+    const fetchdata=async ()=>{
+      const result=await fetchData(url)
+      setCartData(result.filter((items)=>items.userName===sessionStorage.getItem("userId")))
+    }
+   fetchdata()
+  },[])
   
   const handleInputChange = (weight, totalPrice) => {
     prices += weight * totalPrice;

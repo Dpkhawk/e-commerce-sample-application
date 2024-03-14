@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 const SignUp = () => {
   const [district, setDistrict] = useState([
     "Chennai",
@@ -27,10 +27,10 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (arrayOfItems.password === confirmPassword) {
-      fetch("http://localhost:3003/registers", {
-        method: "POST",
-        body: JSON.stringify(arrayOfItems),
-      })
+      axios.post("http://localhost:3003/registers", 
+        
+       arrayOfItems
+      )
        usenavigation("/loginPage");
     } else {
       alert("passwords are wrong");

@@ -1,28 +1,24 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
-import useFetchData from "../data-fetching/fetching";
+ import fetchData from "../data-fetching/fetching";
 
 const Products = () => {
   const url="http://localhost:3006/products"
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  // const value=useFetchData(url)
-  // setAllProducts(value)
-  // console.log(value);
-  // useFetchData(url)
-  // useEffect(() => {
-  //   fetch(`http://localhost:3006/products`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setFilterProducts([...data]);
-  //       setAllProducts([...data]);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const fetching=async()=>{
+      const result= await fetchData(url)
+      setAllProducts([...result])
+      setFilterProducts([...result])
+    }
+    fetching()
+  }, []);
   const searchBar = (value) => {
     if (value === '') {
       setAllProducts(filterProducts)
