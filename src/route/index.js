@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 import SignUp from "../component/signup/signup-page";
 import Products from "../component/products/products-page";
@@ -11,6 +12,7 @@ import ProductDetailView from "../component/products/product-detail-view";
 import BoughtPage from "../component/bought-page/bought-page";
 
 const Router = () => {
+  const loggin=sessionStorage.getItem("userId")
   return (
     <>
       <BrowserRouter>

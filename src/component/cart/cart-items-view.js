@@ -1,13 +1,21 @@
 import { useState } from "react";
 
-const CartItemView = ({ products, setChange, handleInputChanges }) => {
+const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
   const [weight, setWeight] = useState(products.kgs);
 
   const handleClick = (id) => {
     fetch(`http://localhost:3005/data/${id}`, {
       method: "DELETE",
     });
-    setChange();
+   
+     data.map((element,index)=>{
+      if(element.id===id){
+        console.log('delete');
+        data.splice(index,1)
+      }
+     })
+     
+     setCartData([...data])
   }
 
   const handleChange = (products) => {
