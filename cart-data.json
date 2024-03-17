@@ -21,23 +21,13 @@
       "userName": "Abi"
     },
     {
-      "id": "1710400080363",
-      "name": "Capsicum",
-      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
-      "price": 17,
-      "discount": 30,
-      "category": "vegetables",
-      "kgs": "2",
-      "userName": "Deepak Kumar P"
-    },
-    {
       "id": "1710405262282",
       "name": "Cabbage",
       "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlSmMQmoGhFnckZYMqmw7jMfr6xdBRVHpsd-PrU0D1UFa3_NB0",
       "price": 32,
       "discount": 40,
       "category": "vegetables",
-      "kgs": "4",
+      "kgs": "1",
       "userName": "Deepak Kumar P"
     }
   ]

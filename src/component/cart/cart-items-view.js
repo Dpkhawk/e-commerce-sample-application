@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
-
+import { deleteItems,editItems } from "../reduxNew/cart-redux";
+import { useDispatch } from "react-redux";
 const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
   const [weight, setWeight] = useState(products.kgs);
+  const dispatch=useDispatch()
 
   const handleClick = (id) => {
     // fetch(`http://localhost:3005/data/${id}`, {
     //   method: "DELETE",
     // });
-     axios.delete(`http://localhost:3005/data/${id}`)
+    //  axios.delete(`http://localhost:3005/data/${id}`)
+    dispatch(deleteItems(`http://localhost:3005/data/${id}`))
      data.map((element,index)=>{
       if(element.id===id){
         console.log('delete');
@@ -25,11 +28,13 @@ const CartItemView = ({ products, handleInputChanges,data,setCartData }) => {
   //     body: JSON.stringify({ ...products, kgs: weight }),
   //   });
   
-     axios.put(`http://localhost:3005/data/${products.id}`,{
+    //  axios.put(`http://localhost:3005/data/${products.id}`,{
     
-        ...products,kgs:weight
+        // ...products,kgs:weight
       
-    })}
+    // })}
+    dispatch(editItems({url:`http://localhost:3005/data/${products.id}`,product:{ ...products,kgs:weight}}))
+  }
   const totalChange = (e) => {
     setWeight(e.target.value);
   };
