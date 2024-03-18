@@ -1,21 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import fetchData from "../data-fetching/fetching";
+import React from "react";
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
-  const [cartData, setCartdata] = useState([])
+  const [cartData, setCartdata] = useState([]);
   const navigation = useNavigate();
-    const url="http://localhost:3005/data"
-    
+  const url = "http://localhost:3005/data";
+
   useEffect(() => {
-    const fetchdata=async()=>{
-      const result= await fetchData(url)
-      setCartdata([...result])
-    }
-    fetchdata()
+    const fetchdata = async () => {
+      const result = await fetchData(url);
+      setCartdata([...result]);
+    };
+    fetchdata();
   }, []);
 
   const handleChange = (e) => {
@@ -30,40 +31,40 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   const handleClick = (cartProduct) => {
     setCart(false);
     cartData.map((firstElement) => {
-
-      if (((cartProduct.name === firstElement.name) && (sessionStorage.getItem("userId") === firstElement.userName))) {
-
-        axios.delete(`http://localhost:3005/data/${firstElement.id}`)
-         
+      if (
+        cartProduct.name === firstElement.name &&
+        sessionStorage.getItem("userId") === firstElement.userName
+      ) {
+        axios.delete(`http://localhost:3005/data/${firstElement.id}`);
       }
-    })
-
+    });
 
     const cartObject = {
       ...cartProduct,
       kgs: weight,
       userName: sessionStorage.getItem("userId"),
-      id: `${id}`
+      id: `${id}`,
     };
     // fetch("http://localhost:3005/data", {
     //   method: "POST",
     //   body: JSON.stringify(cartObject),
     // })
-    axios.post("http://localhost:3005/data",{...cartObject})
-  }
+    axios.post("http://localhost:3005/data", { ...cartObject });
+  };
 
   const handleDetailView = (products) => {
     navigation(`/product`, { state: { id: products } });
   };
   return (
     <div className="products">
-      <div
-        className="productsChild"
-        key={product.id}
-       
-      >
+      <div className="productsChild" key={product.id}>
         <div>
-          <img className="productsImg" src={product.src} alt={product.name}  onClick={() => handleDetailView(product)} />
+          <img
+            className="productsImg"
+            src={product.src}
+            alt={product.name}
+            onClick={() => handleDetailView(product)}
+          />
         </div>
         <br />
         <div className="productsContent">
@@ -96,5 +97,5 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       </div>
     </div>
   );
-}
-export default ProductItemView
+};
+export default ProductItemView;

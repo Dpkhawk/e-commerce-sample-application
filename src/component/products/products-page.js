@@ -1,54 +1,66 @@
 import { useEffect, useState } from "react";
-
+import React from "react";
 import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
- import fetchData from "../data-fetching/fetching";
+import fetchData from "../data-fetching/fetching";
+import { useDispatch, useSelector } from "react-redux";
+import { getitems } from "../reduxNew/cart-redux";
 
 const Products = () => {
-  const url="http://localhost:3006/products"
+  const url = "http://localhost:3006/products";
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  const dispatch=useDispatch()
+  const value=useSelector(state=>state.cartValue.items)
   useEffect(() => {
-    const fetching=async()=>{
-      const result= await fetchData(url)
-      setAllProducts([...result])
-      setFilterProducts([...result])
-    }
-    fetching()
+    // const fetching = async () => {
+    //   const result = await fetchData(url);
+    //   setAllProducts([...result]);
+    //   setFilterProducts([...result]);
+    // };
+    // fetching();
+    dispatch(getitems(url))
+    console.log(value);
   }, []);
   const searchBar = (value) => {
-    if (value === '') {
-      setAllProducts(filterProducts)
+    if (value === "") {
+      setAllProducts(filterProducts);
+    } else {
+      const da = filterProducts.filter(
+        (item) => item.name.toLowerCase() === value.toLowerCase()
+      );
+      setAllProducts(da);
     }
-    else {
-      const da = filterProducts.filter((item) => item.name.toLowerCase() === value.toLowerCase())
-      setAllProducts(da)
-    }
-  }
+  };
   const handleFilter = (filter) => {
     if (filter === "all") {
       setAllProducts([...filterProducts]);
     } else {
-      setAllProducts(filterProducts.filter((product) => product.category === filter));
+      setAllProducts(
+        filterProducts.filter((product) => product.category === filter)
+      );
     }
   };
 
   const functionToCart = (obj) => {
     selectedItems.map((e, i) => {
-      if ((e.name === obj.name)||(e.price===0)) {
+      if (e.name === obj.name || e.price === 0) {
         selectedItems.splice(i, 1);
       }
     });
     setSelectedItems([...selectedItems, obj]);
   };
-  const now = Date.now()
+  const now = Date.now();
   return (
     <div className="displayProducts">
       <div className="block1">
-        <NavigationBar value={true} setSearchItems={(value) => searchBar(value)} />
+        <NavigationBar
+          value={true}
+          setSearchItems={(value) => searchBar(value)}
+        />
       </div>
       <div className="block2">
         <div className="productsDisplay">

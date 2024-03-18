@@ -1,39 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 
 import NavigationBar from "../home-page/navigation-bar";
-
+import React from "react";
 import CartItemView from "./cart-items-view";
-import useFetchData from "../data-fetching/fetching";
 import fetchData from "../data-fetching/fetching";
 
-
 const Cart = () => {
-  const navigation=useNavigate()
-  // if(!sessionStorage.getItem("userId")){
-  //   navigation("/")
-  // }
-  const url="http://localhost:3005/data"
-  const [cartData,setCartData] = useState([]);
+  const navigation = useNavigate();
+
+  const url = "http://localhost:3005/data";
+  const [cartData, setCartData] = useState([]);
   const [price, setPrice] = useState(0);
+  // const totalPrice = useSelector((state) => state.cartValue.value);
+  // const dispatch = useDispatch();
   var prices = 0;
 
-
-  useEffect(()=>{
-    const fetchdata=async ()=>{
-      const result=await fetchData(url)
-      setCartData(result.filter((items)=>items.userName===sessionStorage.getItem("userId")))
-    }
-   fetchdata()
-  },[])
-  
+  useEffect(() => {
+    const fetchdata = async () => {
+      const result = await fetchData(url);
+      setCartData(
+        result.filter(
+          (items) => items.userName === sessionStorage.getItem("userId")
+        )
+      );
+    };
+    fetchdata();
+    // dispatch(getitems(url))
+    // console.log(items);
+  }, []);
+  // console.log(totalPrice);
   const handleInputChange = (weight, totalPrice) => {
     prices += weight * totalPrice;
     setPrice(prices);
   };
   const handleClick = () => {
-    navigation('/boughtpage')
-  }
+    navigation("/boughtpage");
+  };
 
   return (
     <>
@@ -43,10 +47,9 @@ const Cart = () => {
           <NavigationBar />
         </div>
         <div className="mainContent">
-         
           {cartData.map((product) => {
             return (
-              <div>
+              <div key={product.id}>
                 <CartItemView
                   products={product}
                   handleInputChanges={(weight, price) =>
@@ -55,10 +58,15 @@ const Cart = () => {
                   data={cartData}
                   setCartData={setCartData}
                 />
+                {/* { dispatch(increment(product.price))} */}
               </div>
             );
           })}
-          <button type="button" class="btn btn-success buyProducts" onClick={handleClick}>
+          <button
+            type="button"
+            className="btn btn-success buyProducts"
+            onClick={handleClick}
+          >
             Buy Now
           </button>
           <p>
