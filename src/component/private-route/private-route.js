@@ -1,7 +1,6 @@
-import LoginForm from "../login2/login-form"
+import HigherOrderRouting from "../hoc/routing-component"
 
-const PrivateRoute=({children})=>{
-    const loginValue=sessionStorage.getItem("userId");
-    return loginValue?children:<LoginForm/>
+
+const PrivateRoute=({value,children})=>{
 }
-export default PrivateRoute
+export default HigherOrderRouting(PrivateRoute)

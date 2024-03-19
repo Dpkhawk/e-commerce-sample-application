@@ -5,26 +5,21 @@ import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
 import fetchData from "../data-fetching/fetching";
-import { useDispatch, useSelector } from "react-redux";
-import { getitems } from "../reduxNew/cart-redux";
 
 const Products = () => {
   const url = "http://localhost:3006/products";
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const dispatch=useDispatch()
-  const value=useSelector(state=>state.cartValue.items)
   useEffect(() => {
-    // const fetching = async () => {
-    //   const result = await fetchData(url);
-    //   setAllProducts([...result]);
-    //   setFilterProducts([...result]);
-    // };
-    // fetching();
-    dispatch(getitems(url))
-    console.log(value);
+    const fetching = async () => {
+      const result = await fetchData(url);
+      setAllProducts([...result]);
+      setFilterProducts([...result]);
+    };
+    fetching();
   }, []);
+  
   const searchBar = (value) => {
     if (value === "") {
       setAllProducts(filterProducts);

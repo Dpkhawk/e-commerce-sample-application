@@ -2,10 +2,10 @@
 import { useState } from "react";
 import React from "react";
 import { deleteItems, editItems } from "../reduxNew/cart-redux";
-import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 const CartItemView = ({ products, handleInputChanges, data, setCartData }) => {
   const [weight, setWeight] = useState(products.kgs);
+  const value=useSelector(state=>state.cartValue.value)
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
@@ -50,6 +50,7 @@ const CartItemView = ({ products, handleInputChanges, data, setCartData }) => {
   return (
     <>
       <div className="innerCarts" key={products.id}>
+        
         <img className="cartImage" src={products.src} alt={products.name} />
         <div className="cartPriceDiscount">
           <p>{products.name}</p>

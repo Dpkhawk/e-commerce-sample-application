@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import FoodKart from "../../assests/food kart.png";
+import FoodKart from "../../assests/food-kart.png";
 
 const NavigationBar = ({ value, setSearchItems }) => {
   const loginValue = sessionStorage.getItem("userId");

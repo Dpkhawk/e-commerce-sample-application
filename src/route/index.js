@@ -18,12 +18,12 @@ const Router = () => {
       <BrowserRouter >
         <Routes>
           <Route path="/" element={<DashBoard />}/>
-          <Route path="/SignUp" element={<SignUp />}/>
+          <Route path="/SignUp" element={<PrivateRoute value={!sessionStorage.getItem("userId")}><SignUp /></PrivateRoute>}/>
           <Route path="/products" element={<Products />}/>
           <Route path="/forgotpassword" element={<ForgotPassword />}/>
-          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>}/>
+          <Route path="/cart" element={<PrivateRoute value={sessionStorage.getItem("userId")}><Cart /></PrivateRoute>}/>
           <Route path="/footer" element={<Footer />}/>
-          <Route path="/loginPage" element={<PrivateRoute><LoginForm /></PrivateRoute>}/>
+          <Route path="/loginPage" element={<PrivateRoute value={!sessionStorage.getItem("userId")}><LoginForm /></PrivateRoute>}/>
           <Route path="/product" element={<ProductDetailView />}/>
           <Route path="/boughtpage" element={<BoughtPage />}/>
         </Routes>
