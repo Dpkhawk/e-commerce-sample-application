@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function BoughtPage() {
   const navigation = useNavigate()
+  
   return (<>
     <NavigationBar />
     <div className="orderOuter">

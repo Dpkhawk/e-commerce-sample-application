@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import fetchData from "../data-fetching/fetching";
 import React from "react";
 
+
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
   const [cartData, setCartdata] = useState([]);
   const navigation = useNavigate();
   const url = "http://localhost:3005/data";
-
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchData(url);
@@ -53,7 +53,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   };
 
   const handleDetailView = (products) => {
-    navigation(`/product`, { state: { id: products } });
+    navigation("/product", { state: { id: products } });
   };
   return (
     <div className="products">
@@ -98,4 +98,5 @@ const ProductItemView = ({ product, functionToCart, id }) => {
     </div>
   );
 };
+
 export default ProductItemView;

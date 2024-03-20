@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import FoodKart from "../../assests/food-kart.png";
+import FoodKart from "../../assests/food kart.png";
 
 const NavigationBar = ({ value, setSearchItems }) => {
   const loginValue = sessionStorage.getItem("userId");
-
+  const navigation=useNavigate()
   const handleChange = () => {
+    navigation('/loginPage')
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("bought")
     
   };
   return (

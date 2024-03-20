@@ -1,27 +1,30 @@
 // import axios from "axios";
 import { useState } from "react";
 import React from "react";
-import { deleteItems, editItems } from "../reduxNew/cart-redux";
+import axios from "axios";
+import { deleteItems } from "../reduxNew/reducer";
 import { useDispatch, useSelector } from "react-redux";
-const CartItemView = ({ products, handleInputChanges, data, setCartData }) => {
+const CartItemView = ({ products, handleInputChanges }) => {
   const [weight, setWeight] = useState(products.kgs);
-  const value=useSelector(state=>state.cartValue.value)
+  const value=useSelector(state=>state.cartValue.items);
   const dispatch = useDispatch();
 
-  const handleClick = (id) => {
+  const handleClick = (products) => {
     // fetch(`http://localhost:3005/data/${id}`, {
     //   method: "DELETE",
     // });
     //  axios.delete(`http://localhost:3005/data/${id}`)
-    dispatch(deleteItems(`http://localhost:3005/data/${id}`));
-    data.map((element, index) => {
-      if (element.id === id) {
-        console.log("delete");
-        data.splice(index, 1);
-      }
-    });
+    axios.delete(`http://localhost:3005/data/${products.id}`)
+    
+    dispatch(deleteItems(products.id));
+    // data.map((element, index) => {
+    //   if (element.id === id) {
+    //     console.log("delete");
+    //     data.splice(index, 1);
+    //   }
+    // });
 
-    setCartData([...data]);
+    // setCartData([...data]);
   };
 
   const handleChange = (products) => {
@@ -35,12 +38,14 @@ const CartItemView = ({ products, handleInputChanges, data, setCartData }) => {
     // ...products,kgs:weight
 
     // })}
-    dispatch(
-      editItems({
-        url: `http://localhost:3005/data/${products.id}`,
-        product: { ...products, kgs: weight },
-      })
-    );
+    axios.put(`http://localhost:3005/data/${products.id}`,{...products,kgs:weight})
+    // dispatch(editItems({products:products,addedProduct:weight}))
+    // dispatch(
+    //   editItems({
+    //     url: `http://localhost:3005/data/${products.id}`,
+    //     product: { ...products, kgs: weight },
+    //   })
+    // );
   };
   const totalChange = (e) => {
     setWeight(e.target.value);
@@ -74,7 +79,7 @@ const CartItemView = ({ products, handleInputChanges, data, setCartData }) => {
           <button
             type="button"
             className="btn btn-danger buttonDelete"
-            onClick={() => handleClick(products.id)}
+            onClick={() => handleClick(products)}
           >
             Delete
           </button>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
+import React from "react";
 import SignUp from "../component/signup/signup-page";
 import Products from "../component/products/products-page";
 import DashBoard from "../component/home-page/dashboard";
@@ -18,12 +18,12 @@ const Router = () => {
       <BrowserRouter >
         <Routes>
           <Route path="/" element={<DashBoard />}/>
-          <Route path="/SignUp" element={<PrivateRoute value={!sessionStorage.getItem("userId")}><SignUp /></PrivateRoute>}/>
+          <Route path="/SignUp" element={<PrivateRoute value={"beforeLogin"}><SignUp /></PrivateRoute>}/>
           <Route path="/products" element={<Products />}/>
           <Route path="/forgotpassword" element={<ForgotPassword />}/>
-          <Route path="/cart" element={<PrivateRoute value={sessionStorage.getItem("userId")}><Cart /></PrivateRoute>}/>
+          <Route path="/cart" element={<PrivateRoute ><Cart /></PrivateRoute>}/>
           <Route path="/footer" element={<Footer />}/>
-          <Route path="/loginPage" element={<PrivateRoute value={!sessionStorage.getItem("userId")}><LoginForm /></PrivateRoute>}/>
+          <Route path="/loginPage" element={<PrivateRoute value={"beforeLogin"}><LoginForm /></PrivateRoute>}/>
           <Route path="/product" element={<ProductDetailView />}/>
           <Route path="/boughtpage" element={<BoughtPage />}/>
         </Routes>

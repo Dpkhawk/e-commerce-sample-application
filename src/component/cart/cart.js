@@ -6,6 +6,8 @@ import NavigationBar from "../home-page/navigation-bar";
 import React from "react";
 import CartItemView from "./cart-items-view";
 import fetchData from "../data-fetching/fetching";
+import { useDispatch, useSelector } from "react-redux";
+import { addingStateValue } from "../reduxNew/reducer";
 
 const Cart = () => {
   const navigation = useNavigate();
@@ -13,29 +15,33 @@ const Cart = () => {
   const url = "http://localhost:3005/data";
   const [cartData, setCartData] = useState([]);
   const [price, setPrice] = useState(0);
-  // const totalPrice = useSelector((state) => state.cartValue.value);
-  // const dispatch = useDispatch();
+  const totalPrice = useSelector((state) => state.cartValue.items);
+  const dispatch = useDispatch();
   var prices = 0;
 
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchData(url);
-      setCartData(
-        result.filter(
-          (items) => items.userName === sessionStorage.getItem("userId")
-        )
-      );
+      dispatch(addingStateValue(result))
+      // setCartData(
+      //   result.filter(
+      //     (items) => items.userName === sessionStorage.getItem("userId")
+      //   )
+      // );
     };
     fetchdata();
-    // dispatch(getitems(url))
-    // console.log(items);
   }, []);
-  // console.log(totalPrice);
+
+  const filteredValues=totalPrice.filter(
+    (items) => items.userName === sessionStorage.getItem("userId")
+  )
+  console.log(filteredValues);
   const handleInputChange = (weight, totalPrice) => {
     prices += weight * totalPrice;
     setPrice(prices);
   };
   const handleClick = () => {
+    sessionStorage.setItem("bought",true);
     navigation("/boughtpage");
   };
 
@@ -47,7 +53,7 @@ const Cart = () => {
           <NavigationBar />
         </div>
         <div className="mainContent">
-          {cartData.map((product) => {
+          {filteredValues.map((product) => {
             return (
               <div key={product.id}>
                 <CartItemView
@@ -63,6 +69,7 @@ const Cart = () => {
             );
           })}
           <button
+            disabled={cartData.length===0}
             type="button"
             className="btn btn-success buyProducts"
             onClick={handleClick}

@@ -1,4 +1,4 @@
-import CartChanges from "./cart-redux";
+import CartChanges from "./reducer";
 
 import { configureStore } from "@reduxjs/toolkit";
 

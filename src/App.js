@@ -2,9 +2,10 @@ import "./style.css";
 import Router from "./route";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+// import Profile from "./profiler";
 // import Redux from "./redux/redux";
 import { Provider } from "react-redux";
-import store from "./component/reduxNew/cart-redux-store";
+import store from "./component/reduxNew/index";
 // import TestFile from "./sample";
 // import Main from "./redux/main";
 // import stores from "./redux/store";
@@ -25,6 +26,9 @@ const App = () => {
         <Router />
       </Provider>
       {/* <TestFile/> */}
+      {/* <Profiler id="val" onRender={((phase,actualDuration)=>console.log(phase,actualDuration))}>
+        <Profile/>
+      </Profiler> */}
     </>
   );
 };

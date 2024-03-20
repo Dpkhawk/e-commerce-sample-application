@@ -22,7 +22,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <input type="text" onChange={(e) => setName(e.target.value)} />
+      <input type="text" onChange={(e) => setName(e.target.value)} placeholder="Enter The Correct UserName" />
       <button onClick={(e) => handleSubmit(e)}>Submit</button>
     </>
   );
