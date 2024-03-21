@@ -24,14 +24,17 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const usenavigation = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  async(e) => {
     e.preventDefault();
     if (arrayOfItems.password === confirmPassword) {
-      axios.post("http://localhost:3003/registers", 
-        
-       arrayOfItems
+      await axios.post(
+        "http://localhost:3003/registers",
+
+        arrayOfItems
       )
-       usenavigation("/loginPage");
+      .then(res=>alert('signUp successful'))
+      .catch(alert("something is wrong"))
+      usenavigation("/loginPage");
     } else {
       alert("passwords are wrong");
     }
@@ -57,6 +60,8 @@ const SignUp = () => {
                 placeholder="Full Name"
                 id="username"
                 type="text"
+                pattern="^[a-zA-Z]+$"
+                title="Name only contains alphabets"
               />
               <br />
               <label className="signUpLabel" for="e-mail">
@@ -91,6 +96,8 @@ const SignUp = () => {
                       password: e.target.value,
                     })
                   }
+                pattern="(?=.*[A-Z])(?=.*\d).{8,}"
+                title="Password must contain at least one capital letter, one number, and be at least 8 characters long"
                 />
                 <br />
               </div>
@@ -105,6 +112,8 @@ const SignUp = () => {
                 type="password"
                 id="password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                pattern="(?=.*[A-Z])(?=.*\d).{8,}"
+                title="Password must contain at least one capital letter, one number, and be at least 8 characters long"
               />
               <br />
               <div className="dob">
@@ -139,6 +148,8 @@ const SignUp = () => {
                 className="signUpInput"
                 placeholder="Mobile Number"
                 id="Mobile Number"
+                title="phonenumber must contain 10 digit"
+                pattern="[0-9]{10}"
               />
               <br />
               <label className="signUpLabel" for="Gender">

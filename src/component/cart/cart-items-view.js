@@ -1,51 +1,26 @@
-// import axios from "axios";
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
-import { deleteItems } from "../reduxNew/reducer";
-import { useDispatch, useSelector } from "react-redux";
+import { deleteItems } from "../redux/reducer";
+import { useDispatch } from "react-redux";
 const CartItemView = ({ products, handleInputChanges }) => {
   const [weight, setWeight] = useState(products.kgs);
-  const value=useSelector(state=>state.cartValue.items);
   const dispatch = useDispatch();
 
   const handleClick = (products) => {
-    // fetch(`http://localhost:3005/data/${id}`, {
-    //   method: "DELETE",
-    // });
-    //  axios.delete(`http://localhost:3005/data/${id}`)
     axios.delete(`http://localhost:3005/data/${products.id}`)
-    
+   .then(()=>alert("items deleted successfully"))
+   .catch(()=>alert("something is wrong"))
     dispatch(deleteItems(products.id));
-    // data.map((element, index) => {
-    //   if (element.id === id) {
-    //     console.log("delete");
-    //     data.splice(index, 1);
-    //   }
-    // });
-
-    // setCartData([...data]);
   };
 
   const handleChange = (products) => {
-    //   fetch(`http://localhost:3005/data/${products.id}`, {
-    //     method: "PUT",
-    //     body: JSON.stringify({ ...products, kgs: weight }),
-    //   });
-
-    //  axios.put(`http://localhost:3005/data/${products.id}`,{
-
-    // ...products,kgs:weight
-
-    // })}
-    axios.put(`http://localhost:3005/data/${products.id}`,{...products,kgs:weight})
-    // dispatch(editItems({products:products,addedProduct:weight}))
-    // dispatch(
-    //   editItems({
-    //     url: `http://localhost:3005/data/${products.id}`,
-    //     product: { ...products, kgs: weight },
-    //   })
-    // );
+    axios.put(`http://localhost:3005/data/${products.id}`, {
+      ...products,
+      kgs: weight,
+    })
+    .then(()=>alert("items edited successfully"))
+   .catch(()=>alert("something is wrong"))
   };
   const totalChange = (e) => {
     setWeight(e.target.value);
@@ -53,9 +28,7 @@ const CartItemView = ({ products, handleInputChanges }) => {
   handleInputChanges(weight, products.price);
 
   return (
-    <>
-      <div className="innerCarts" key={products.id}>
-        
+      <div className="innerCarts" >
         <img className="cartImage" src={products.src} alt={products.name} />
         <div className="cartPriceDiscount">
           <p>{products.name}</p>
@@ -92,7 +65,6 @@ const CartItemView = ({ products, handleInputChanges }) => {
           </button>{" "}
         </div>
       </div>
-    </>
   );
 };
 export default CartItemView;

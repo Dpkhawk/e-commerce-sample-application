@@ -4,7 +4,7 @@ import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
-import fetchData from "../data-fetching/fetching";
+import fetchData from "../services/fetching";
 
 const Products = () => {
   const url = "http://localhost:3006/products";
@@ -19,13 +19,13 @@ const Products = () => {
     };
     fetching();
   }, []);
-  
+
   const searchBar = (value) => {
     if (value === "") {
       setAllProducts(filterProducts);
     } else {
       const da = filterProducts.filter(
-        (item) => item.name.toLowerCase() === value.toLowerCase()
+        (item)=>item.name.toLowerCase().startsWith(value.toLowerCase())
       );
       setAllProducts(da);
     }

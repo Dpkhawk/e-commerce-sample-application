@@ -7,7 +7,7 @@ import DashBoard from "../component/home-page/dashboard";
 import ForgotPassword from "../component/forgot-password/forgot-password";
 import Footer from "../component/footer/footer";
 import Cart from "../component/cart/cart";
-import LoginForm from "../component/login2/login-form";
+import LoginForm from "../component/login/login-form";
 import ProductDetailView from "../component/products/product-detail-view";
 import BoughtPage from "../component/bought-page/bought-page";
 import PrivateRoute from "../component/private-route/private-route";
@@ -15,17 +15,38 @@ import PrivateRoute from "../component/private-route/private-route";
 const Router = () => {
   return (
     <>
-      <BrowserRouter >
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DashBoard />}/>
-          <Route path="/SignUp" element={<PrivateRoute value={"beforeLogin"}><SignUp /></PrivateRoute>}/>
-          <Route path="/products" element={<Products />}/>
-          <Route path="/forgotpassword" element={<ForgotPassword />}/>
-          <Route path="/cart" element={<PrivateRoute ><Cart /></PrivateRoute>}/>
-          <Route path="/footer" element={<Footer />}/>
-          <Route path="/loginPage" element={<PrivateRoute value={"beforeLogin"}><LoginForm /></PrivateRoute>}/>
-          <Route path="/product" element={<ProductDetailView />}/>
-          <Route path="/boughtpage" element={<BoughtPage />}/>
+          <Route path="/" element={<DashBoard />} />
+          <Route
+            path="/SignUp"
+            element={
+              <PrivateRoute value={"beforeLogin"}>
+                <SignUp />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/products" element={<Products />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route
+            path="/cart"
+            element={
+              <PrivateRoute>
+                <Cart />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/footer" element={<Footer />} />
+          <Route
+            path="/loginPage"
+            element={
+              <PrivateRoute value={"beforeLogin"}>
+                <LoginForm />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/product" element={<ProductDetailView />} />
+          <Route path="/boughtpage" element={<PrivateRoute value={"success"} ><BoughtPage /></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
     </>

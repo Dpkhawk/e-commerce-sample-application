@@ -1,10 +1,8 @@
-
 import React from "react";
-import { useSelector } from "react-redux";
+
 const ProductSideBar = ({ selectedItems }) => {
   let price = 0;
-  const value=useSelector(state=>state.cartValue.value)
- 
+
   return (
     <>
       <table className="productSideBar">

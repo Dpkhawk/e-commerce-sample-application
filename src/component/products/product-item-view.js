@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fetchData from "../data-fetching/fetching";
+import fetchData from "../services/fetching";
 import React from "react";
-
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
@@ -29,6 +28,11 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   };
 
   const handleClick = (cartProduct) => {
+    console.log(weight);
+      if(weight<=0){
+        alert("Quantity must not be negative or zero")
+      }
+     else{
     setCart(false);
     cartData.map((firstElement) => {
       if (
@@ -45,11 +49,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       userName: sessionStorage.getItem("userId"),
       id: `${id}`,
     };
-    // fetch("http://localhost:3005/data", {
-    //   method: "POST",
-    //   body: JSON.stringify(cartObject),
-    // })
-    axios.post("http://localhost:3005/data", { ...cartObject });
+    axios.post("http://localhost:3005/data", cartObject );}
   };
 
   const handleDetailView = (products) => {

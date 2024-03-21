@@ -4,12 +4,11 @@ import FoodKart from "../../assests/food kart.png";
 
 const NavigationBar = ({ value, setSearchItems }) => {
   const loginValue = sessionStorage.getItem("userId");
-  const navigation=useNavigate()
+  const navigation = useNavigate();
   const handleChange = () => {
-    navigation('/loginPage')
+    navigation("/loginPage");
     sessionStorage.removeItem("userId");
-    sessionStorage.removeItem("bought")
-    
+    sessionStorage.removeItem("bought");
   };
   return (
     <nav>
@@ -17,7 +16,7 @@ const NavigationBar = ({ value, setSearchItems }) => {
         <Link to={"/"} className="homeLinks">
           <img className="logoNav" src={FoodKart} alt="food kart" />
         </Link>
-       
+
         {loginValue ? (
           <Link className="homeLinks" to={"/cart"}>
             Cart

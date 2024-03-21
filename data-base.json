@@ -66,17 +66,6 @@
       "password": "asfa@3",
       "zipcode": "789456",
       "district": "Namakkal"
-    },
-    {
-      "id": "kumar",
-      "email": "kumar@gmail.com",
-      "dob": "2024-03-14",
-      "mobileNumber": "987976789",
-      "gender": "Male",
-      "address": "siruseri",
-      "password": "kumar@5",
-      "zipcode": "67890",
-      "district": "Trichy"
     }
   ]
 }

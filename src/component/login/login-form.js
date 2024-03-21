@@ -10,7 +10,9 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const showCredentials = async () => {
-      const result = await axios.get(`http://localhost:3003/registers/${userName}`);
+      const result = await axios.get(
+        `http://localhost:3003/registers/${userName}`
+      );
       const value = result.data;
       if (value.id === userName && value.password === password) {
         sessionStorage.setItem("userId", userName);
