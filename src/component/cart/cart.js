@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Outlet,  useNavigate } from "react-router";
 
-import NavigationBar from "../home-page/navigation-bar";
+
 import React from "react";
 import CartItemView from "./cart-items-view";
 import fetchData from "../services/fetching";
 import { useDispatch, useSelector } from "react-redux";
 import { addingStateValue } from "../redux/reducer";
+import axios from "axios";
+
 
 const Cart = () => {
   const navigation = useNavigate();
@@ -34,16 +36,20 @@ const Cart = () => {
     setPrice(prices);
   };
   const handleClick = () => {
+    filteredValues.map((item)=>{
+      axios.delete(`http://localhost:3005/data/${item.id}`)
+    })
     sessionStorage.setItem("bought", true);
     navigation("/boughtpage");
   };
 
   return (
-    <>
+    
       <div className="cartOuter">
         <div className="navContent">
           {" "}
-          <NavigationBar />
+          {/* <NavigationBar /> */}
+          <Outlet/>
         </div>
         <div className="mainContent">
           {filteredValues.map((product) => {
@@ -75,7 +81,6 @@ const Cart = () => {
         <div className="leftSideContent"></div>
         <div className="rightSideContent"></div>
       </div>
-    </>
   );
 };
 

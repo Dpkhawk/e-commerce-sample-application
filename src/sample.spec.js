@@ -5,8 +5,8 @@ import "@testing-library/jest-dom";
 
 test("renders selected items", () => {
   const selectedItems = [
-    { name: "Item 1", kgs: 2, price: 10 },
-    { name: "Item 2", kgs: 3, price: 15 },
+    { name: "Apple", kgs: 2, price: 10 },
+    { name: "Orange", kgs: 3, price: 15 },
   ];
 
   render(<ProductSideBar selectedItems={selectedItems} />);
@@ -20,8 +20,8 @@ test("renders selected items", () => {
 
 test("calculates total price", () => {
   const selectedItems = [
-    { name: "Item 1", kgs: 2, price: 10 },
-    { name: "Item 2", kgs: 3, price: 15 },
+    { name: "Apple", kgs: 2, price: 10 },
+    { name: "Orange", kgs: 3, price: 15 },
   ];
   render(<ProductSideBar selectedItems={selectedItems} />);
 

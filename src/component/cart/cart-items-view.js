@@ -15,12 +15,16 @@ const CartItemView = ({ products, handleInputChanges }) => {
   };
 
   const handleChange = (products) => {
+    if(weight<=0||weight>=10){
+      alert("Quantity is not acceptable")
+    }
+    else{
     axios.put(`http://localhost:3005/data/${products.id}`, {
       ...products,
       kgs: weight,
     })
     .then(()=>alert("items edited successfully"))
-   .catch(()=>alert("something is wrong"))
+   .catch(()=>alert("something is wrong"))}
   };
   const totalChange = (e) => {
     setWeight(e.target.value);

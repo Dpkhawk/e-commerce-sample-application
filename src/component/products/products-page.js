@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import NavigationBar from "../home-page/navigation-bar";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
 import fetchData from "../services/fetching";
+import { Outlet } from "react-router";
+
 
 const Products = () => {
   const url = "http://localhost:3006/products";
@@ -19,13 +20,12 @@ const Products = () => {
     };
     fetching();
   }, []);
-
-  const searchBar = (value) => {
-    if (value === "") {
-      setAllProducts(filterProducts);
+  const searchBar = (searchItems) => {
+    if (searchItems === "") {
+      setAllProducts(allProducts);
     } else {
       const da = filterProducts.filter(
-        (item)=>item.name.toLowerCase().startsWith(value.toLowerCase())
+        (item)=>item.name.toLowerCase().startsWith(searchItems.toLowerCase())
       );
       setAllProducts(da);
     }
@@ -39,7 +39,8 @@ const Products = () => {
       );
     }
   };
-
+  const apiUrl = process.env.REACT_APP_API_URL;
+   console.log(apiUrl);
   const functionToCart = (obj) => {
     selectedItems.map((e, i) => {
       if (e.name === obj.name || e.price === 0) {
@@ -52,10 +53,11 @@ const Products = () => {
   return (
     <div className="displayProducts">
       <div className="block1">
-        <NavigationBar
+        {/* <NavigationBar
           value={true}
           setSearchItems={(value) => searchBar(value)}
-        />
+        /> */}
+        <Outlet context={searchBar}/>
       </div>
       <div className="block2">
         <div className="productsDisplay">
@@ -99,7 +101,8 @@ const Products = () => {
         </div>
       </div>
       <div className="block4">
-        <Footer />
+        {/* <Footer /> */}
+        <Outlet />
       </div>
     </div>
   );

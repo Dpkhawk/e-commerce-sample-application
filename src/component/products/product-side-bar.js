@@ -4,7 +4,7 @@ const ProductSideBar = ({ selectedItems }) => {
   let price = 0;
 
   return (
-    <>
+    
       <table className="productSideBar">
         {selectedItems.map((element) => {
           price += element.price;
@@ -34,7 +34,7 @@ const ProductSideBar = ({ selectedItems }) => {
           </tr>
         </div>
       </table>
-    </>
+    
   );
 };
 export default ProductSideBar;

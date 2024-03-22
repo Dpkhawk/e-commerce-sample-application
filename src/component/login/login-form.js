@@ -1,30 +1,37 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import fetchData from "../services/fetching";
 const LoginForm = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigate();
 
+  const navigation = useNavigate();
+  
   const handleSubmit = (e) => {
+    
+    const url=`http://localhost:3003/registers/${userName}`
     e.preventDefault();
+   
     const showCredentials = async () => {
-      const result = await axios.get(
-        `http://localhost:3003/registers/${userName}`
-      );
-      const value = result.data;
-      if (value.id === userName && value.password === password) {
+      try{
+      const result = await fetchData(url)
+      
+      if (result.id === userName && result.password === password) {
         sessionStorage.setItem("userId", userName);
         navigation("/");
       } else {
         alert("invalid credentials");
       }
-    };
+    }catch{
+      alert("invalid credentials")
+    }}
     showCredentials();
+    
+  
   };
   return (
-    <>
+    
       <div className="loginForm">
         <div className="loginContent">
           <h1 className="h1">Login</h1>
@@ -72,7 +79,7 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
-    </>
+    
   );
 };
 export default LoginForm;

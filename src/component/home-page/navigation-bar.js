@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 import FoodKart from "../../assests/food kart.png";
 
-const NavigationBar = ({ value, setSearchItems }) => {
+const NavigationBar = () => {
   const loginValue = sessionStorage.getItem("userId");
   const navigation = useNavigate();
   const handleChange = () => {
@@ -10,8 +10,15 @@ const NavigationBar = ({ value, setSearchItems }) => {
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("bought");
   };
+  const search=useOutletContext();
+ 
+  const handleSearchChange=(e)=>{
+  
+     search(e.target.value)
+  }
   return (
     <nav>
+
       <div className="FloatLeft">
         <Link to={"/"} className="homeLinks">
           <img className="logoNav" src={FoodKart} alt="food kart" />
@@ -26,12 +33,12 @@ const NavigationBar = ({ value, setSearchItems }) => {
           Products
         </Link>
       </div>
-      {value ? (
+      {search ? (
         <input
           className="searchBar"
           placeholder="search items"
           type="text"
-          onChange={(e) => setSearchItems(e.target.value)}
+          onChange={(e) =>handleSearchChange(e)}
         />
       ) : null}
       <div className="LogIn">

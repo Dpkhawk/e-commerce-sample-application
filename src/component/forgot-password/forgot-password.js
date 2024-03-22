@@ -3,22 +3,28 @@ import axios from "axios";
 const ForgotPassword = () => {
   const [Name, setName] = useState("");
 
-  const handleSubmit = async(e) => {
-    fetch(`http://localhost:3003/registers/${Name}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.id === Name) {
+  const handleSubmit = () => {
+    axios
+      .get(`http://localhost:3003/registers/${Name}`)
+      .then((res) => {
+        if (res.data.id === Name) {
           const Mail = prompt("Enter the mail");
-          if (data.email === Mail) {
+
+          if (res.data.email === Mail) {
             const newPassword = prompt("Enter the new password");
-            fetch(`http://localhost:3003/registers/${Name}`, {
-              method: "PUT",
-              body: JSON.stringify({ ...data, password: newPassword }),
-            });
+            axios
+              .put(`http://localhost:3003/registers/${Name}`, {
+                ...res.data,
+                password: newPassword,
+              })
+              .then(() => alert("password changed successfully"))
+              .catch(() => alert("something went wrong"));
+          } else {
+            throw new Error();
           }
         }
-      });
-     const result=await axios.get()
+      })
+      .catch(() => alert("invalid credentials"));
   };
 
   return (

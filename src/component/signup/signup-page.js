@@ -25,23 +25,29 @@ const SignUp = () => {
   const usenavigation = useNavigate();
 
   const handleSubmit =  async(e) => {
+
     e.preventDefault();
+    if((arrayOfItems.id.match("^[a-zA-Z]+$"))&&(arrayOfItems.email.includes("@")&&arrayOfItems.email.endsWith(".com"))&&(arrayOfItems.password.match("(?=.*[A-Z])(?=.*).{8,}"))&&(arrayOfItems.mobileNumber.match("[0-9]{10}"))&&(arrayOfItems.zipcode.match("[0-9]{6}"))){
+
+    
     if (arrayOfItems.password === confirmPassword) {
       await axios.post(
         "http://localhost:3003/registers",
 
         arrayOfItems
       )
-      .then(res=>alert('signUp successful'))
-      .catch(alert("something is wrong"))
+      .then(()=>alert('signUp successful'))
+      .catch(()=>alert("something is wrong"))
       usenavigation("/loginPage");
     } else {
       alert("passwords are wrong");
+    }}
+    else{
+      alert('invalid credentials')
     }
   };
 
   return (
-    <>
       <div className="outerSignUp">
         <div className="signUp">
           <fieldset>
@@ -232,7 +238,7 @@ const SignUp = () => {
           </fieldset>
         </div>
       </div>
-    </>
+    
   );
 };
 export default SignUp;

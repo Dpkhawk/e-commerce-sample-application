@@ -28,9 +28,8 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   };
 
   const handleClick = (cartProduct) => {
-    console.log(weight);
-      if(weight<=0){
-        alert("Quantity must not be negative or zero")
+      if(weight<=0||weight>=10){
+        alert("Quantity is not acceptable")
       }
      else{
     setCart(false);

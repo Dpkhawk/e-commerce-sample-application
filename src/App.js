@@ -7,12 +7,13 @@ import { Provider } from "react-redux";
 import store from "./component/redux/index";
 
 const App = () => {
+  // require('dotenv').config()
   return (
-    <>
+  
       <Provider store={store}>
         <Router />
       </Provider>
-    </>
+    
   );
 };
 
