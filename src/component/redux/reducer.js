@@ -9,8 +9,11 @@ const CartChanges = createSlice({
     },
     addingStateValue(state, action) {
       state.items = [...action.payload];
+    },
+    searchItems(state,action){
+      state.value=action.payload
     }
   },
 });
-export const { deleteItems, addingStateValue } = CartChanges.actions;
+export const { deleteItems, addingStateValue,searchItems } = CartChanges.actions;
 export default CartChanges.reducer;

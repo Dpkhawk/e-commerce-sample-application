@@ -30,6 +30,7 @@ const Router = () => {
           <Route path="/products" element={<NavigationBar />} />
           <Route path="/products" element={<Footer />} />
         </Route>
+        
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route
           path="/cart"

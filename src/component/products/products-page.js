@@ -8,13 +8,13 @@ import { Outlet } from "react-router";
 
 
 const Products = () => {
-  const url = "http://localhost:3006/products";
+  const apiUrl2 = process.env.REACT_APP_API_URL;
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   useEffect(() => {
     const fetching = async () => {
-      const result = await fetchData(url);
+      const result = await fetchData(apiUrl2);
       setAllProducts([...result]);
       setFilterProducts([...result]);
     };
@@ -22,10 +22,10 @@ const Products = () => {
   }, []);
   const searchBar = (searchItems) => {
     if (searchItems === "") {
-      setAllProducts(allProducts);
+      setAllProducts(filterProducts);
     } else {
       const da = filterProducts.filter(
-        (item)=>item.name.toLowerCase().startsWith(searchItems.toLowerCase())
+        (item)=>item.name.toLowerCase().includes(searchItems.toLowerCase())
       );
       setAllProducts(da);
     }
@@ -39,8 +39,6 @@ const Products = () => {
       );
     }
   };
-  const apiUrl = process.env.REACT_APP_API_URL;
-   console.log(apiUrl);
   const functionToCart = (obj) => {
     selectedItems.map((e, i) => {
       if (e.name === obj.name || e.price === 0) {
@@ -58,7 +56,9 @@ const Products = () => {
           setSearchItems={(value) => searchBar(value)}
         /> */}
         <Outlet context={searchBar}/>
+        
       </div>
+      
       <div className="block2">
         <div className="productsDisplay">
           {allProducts.map((vegetables) => {
@@ -69,6 +69,7 @@ const Products = () => {
                   key={vegetables.id}
                   functionToCart={(obj) => functionToCart(obj)}
                   id={now}
+                  products={filterProducts}
                 />
               </div>
             );

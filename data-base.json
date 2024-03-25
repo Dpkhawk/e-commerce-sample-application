@@ -7,7 +7,7 @@
       "mobileNumber": "7598686691",
       "gender": "Male",
       "address": "Siruseri,chennai",
-      "password": "abi@12",
+      "password": "aPPA@9894",
       "zipcode": "639005",
       "district": "Karur"
     },
@@ -66,6 +66,17 @@
       "password": "asfa@3",
       "zipcode": "789456",
       "district": "Namakkal"
+    },
+    {
+      "id": "Deepak",
+      "email": "deepak@gmail.com",
+      "dob": "2024-03-19",
+      "mobileNumber": "8907658979",
+      "gender": "Male",
+      "address": "chennai",
+      "password": "aPPA@9894",
+      "zipcode": "890765",
+      "district": "Trichy"
     }
   ]
 }

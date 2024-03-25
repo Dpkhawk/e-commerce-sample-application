@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { postData } from "../services/fetching";
 const SignUp = () => {
   const [district, setDistrict] = useState([
     "Chennai",
@@ -23,7 +23,7 @@ const SignUp = () => {
   });
   const [confirmPassword, setConfirmPassword] = useState();
   const usenavigation = useNavigate();
-
+  const apiURL=process.env.REACT_APP_REGISTERS_URL
   const handleSubmit =  async(e) => {
 
     e.preventDefault();
@@ -31,8 +31,8 @@ const SignUp = () => {
 
     
     if (arrayOfItems.password === confirmPassword) {
-      await axios.post(
-        "http://localhost:3003/registers",
+      await postData(
+        apiURL,
 
         arrayOfItems
       )

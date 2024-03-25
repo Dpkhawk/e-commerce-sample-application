@@ -7,15 +7,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
 
   const navigation = useNavigate();
+  const apiUrl1 = process.env.REACT_APP_REGISTERS_URL
   
   const handleSubmit = (e) => {
-    
-    const url=`http://localhost:3003/registers/${userName}`
     e.preventDefault();
    
     const showCredentials = async () => {
       try{
-      const result = await fetchData(url)
+      const result = await fetchData(`${apiUrl1}/${userName}`)
       
       if (result.id === userName && result.password === password) {
         sessionStorage.setItem("userId", userName);

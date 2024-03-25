@@ -1,14 +1,14 @@
 import { useState } from "react";
 import React from "react";
-import axios from "axios";
 import { deleteItems } from "../redux/reducer";
 import { useDispatch } from "react-redux";
-const CartItemView = ({ products, handleInputChanges }) => {
+import { deleteData, putData } from "../services/fetching";
+const CartItemView = ({ products, handleInputChanges,url }) => {
   const [weight, setWeight] = useState(products.kgs);
   const dispatch = useDispatch();
 
   const handleClick = (products) => {
-    axios.delete(`http://localhost:3005/data/${products.id}`)
+    deleteData(`${url}/${products.id}`)
    .then(()=>alert("items deleted successfully"))
    .catch(()=>alert("something is wrong"))
     dispatch(deleteItems(products.id));
@@ -19,7 +19,7 @@ const CartItemView = ({ products, handleInputChanges }) => {
       alert("Quantity is not acceptable")
     }
     else{
-    axios.put(`http://localhost:3005/data/${products.id}`, {
+    putData(`${url}/${products.id}`, {
       ...products,
       kgs: weight,
     })

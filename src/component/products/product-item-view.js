@@ -1,23 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fetchData from "../services/fetching";
+import  { deleteData, postData} from "../services/fetching";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
-  const [cartData, setCartdata] = useState([]);
+  const values=useSelector(state=>state.cartValue.items)
+  const [cartData, setCartdata] = useState(values);
+  const apiURL=process.env.REACT_APP_DATA_URL
   const navigation = useNavigate();
-  const url = "http://localhost:3005/data";
-  useEffect(() => {
-    const fetchdata = async () => {
-      const result = await fetchData(url);
-      setCartdata([...result]);
-    };
-    fetchdata();
-  }, []);
-
   const handleChange = (e) => {
     setWeight(e.target.value);
     functionToCart({
@@ -38,7 +32,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
         cartProduct.name === firstElement.name &&
         sessionStorage.getItem("userId") === firstElement.userName
       ) {
-        axios.delete(`http://localhost:3005/data/${firstElement.id}`);
+        deleteData(`${apiURL}/${firstElement.id}`);
       }
     });
 
@@ -48,7 +42,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       userName: sessionStorage.getItem("userId"),
       id: `${id}`,
     };
-    axios.post("http://localhost:3005/data", cartObject );}
+    postData(apiURL, cartObject );}
   };
 
   const handleDetailView = (products) => {
@@ -56,7 +50,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   };
   return (
     <div className="products">
-      <div className="productsChild" key={product.id}>
+      <div className="productsChild" >
         <div>
           <img
             className="productsImg"

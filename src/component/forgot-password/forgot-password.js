@@ -1,19 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
+import { putData } from "../services/fetching";
 const ForgotPassword = () => {
   const [Name, setName] = useState("");
-
+  const apiUrl1 = process.env.REACT_APP_REGISTERS_URL;
   const handleSubmit = () => {
     axios
-      .get(`http://localhost:3003/registers/${Name}`)
+      .get(`${apiUrl1}/${Name}`)
       .then((res) => {
         if (res.data.id === Name) {
           const Mail = prompt("Enter the mail");
 
           if (res.data.email === Mail) {
             const newPassword = prompt("Enter the new password");
-            axios
-              .put(`http://localhost:3003/registers/${Name}`, {
+              putData(`${apiUrl1}/${Name}`, {
                 ...res.data,
                 password: newPassword,
               })

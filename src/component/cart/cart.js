@@ -8,13 +8,13 @@ import CartItemView from "./cart-items-view";
 import fetchData from "../services/fetching";
 import { useDispatch, useSelector } from "react-redux";
 import { addingStateValue } from "../redux/reducer";
-import axios from "axios";
+import { deleteData } from "../services/fetching";
 
 
 const Cart = () => {
   const navigation = useNavigate();
 
-  const url = "http://localhost:3005/data";
+  const apiUrl = process.env.REACT_APP_DATA_URL
   const [price, setPrice] = useState(0);
   const totalItems = useSelector((state) => state.cartValue.items);
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const result = await fetchData(url);
+      const result = await fetchData(apiUrl);
       dispatch(addingStateValue(result));
     };
     fetchdata();
@@ -37,12 +37,11 @@ const Cart = () => {
   };
   const handleClick = () => {
     filteredValues.map((item)=>{
-      axios.delete(`http://localhost:3005/data/${item.id}`)
+      deleteData(`${apiUrl}/${item.id}`)
     })
     sessionStorage.setItem("bought", true);
     navigation("/boughtpage");
   };
-
   return (
     
       <div className="cartOuter">
@@ -60,6 +59,7 @@ const Cart = () => {
                   handleInputChanges={(weight, price) =>
                     handleInputChange(weight, price)
                   }
+                  url={apiUrl}
                 />
               </div>
             );

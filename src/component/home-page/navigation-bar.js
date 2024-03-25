@@ -11,9 +11,9 @@ const NavigationBar = () => {
     sessionStorage.removeItem("bought");
   };
   const search=useOutletContext();
- 
+
   const handleSearchChange=(e)=>{
-  
+
      search(e.target.value)
   }
   return (
