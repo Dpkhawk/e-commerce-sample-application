@@ -11,7 +11,7 @@ const fetchData = async (url) => {
 
 export const deleteData = async (url) => {
   try{
-  await axios.delete(url);
+  await axios.delete(url)
   }
   catch{
     alert("invalid access ")

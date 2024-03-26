@@ -12,7 +12,6 @@ import ProductDetailView from "../component/products/product-detail-view";
 import BoughtPage from "../component/bought-page/bought-page";
 import PrivateRoute from "../component/private-route/private-route";
 import NavigationBar from "../component/home-page/navigation-bar";
-
 const Router = () => {
   return (
     <BrowserRouter>
@@ -30,6 +29,7 @@ const Router = () => {
           <Route path="/products" element={<NavigationBar />} />
           <Route path="/products" element={<Footer />} />
         </Route>
+ 
         
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route

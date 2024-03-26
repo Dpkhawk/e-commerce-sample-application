@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const CartChanges = createSlice({
   name: "changes",
-  initialState: { value: '', items: [] },
+  initialState: { value:'', items: [] },
   reducers: {
     deleteItems(state, action) {
       state.items = state.items.filter((items) => items.id !== action.payload);

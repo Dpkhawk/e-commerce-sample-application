@@ -10,7 +10,7 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   const [cart, setCart] = useState(true);
   const values=useSelector(state=>state.cartValue.items)
   const [cartData, setCartdata] = useState(values);
-  const apiURL=process.env.REACT_APP_DATA_URL
+  const apiURL=process.env.REACT_APP_CARTDATA_ENDPOINT
   const navigation = useNavigate();
   const handleChange = (e) => {
     setWeight(e.target.value);
@@ -69,7 +69,8 @@ const ProductItemView = ({ product, functionToCart, id }) => {
             className="inputQuantity"
             placeholder="Quantity"
             onChange={(e) => handleChange(e)}
-            key={product.id}
+            min={1}
+            max={9}
           />
           <p className="productsPrice">
             <b>₹{weight * product.price}</b> &nbsp;

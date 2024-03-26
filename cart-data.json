@@ -21,13 +21,13 @@
       "userName": "Abi"
     },
     {
-      "id": "1711340844119",
-      "name": "Carrot",
-      "src": "https://www.jiomart.com/images/product/original/590000186/carrot-orange-500-g-product-images-o590000186-p590000186-0-202207291751.jpg?im=Resize=(1000,1000)",
-      "price": 20,
-      "discount": 75,
+      "id": "1711454749325",
+      "name": "Capsicum",
+      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
+      "price": 17,
+      "discount": 30,
       "category": "vegetables",
-      "kgs": "9",
+      "kgs": "6",
       "userName": "Deepak Kumar P"
     }
   ]

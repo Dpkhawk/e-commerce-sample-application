@@ -1,6 +1,8 @@
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 
 import FoodKart from "../../assests/food kart.png";
+import { useDispatch, useSelector } from "react-redux";
+import { searchItems } from "../redux/reducer";
 
 const NavigationBar = () => {
   const loginValue = sessionStorage.getItem("userId");
@@ -11,10 +13,10 @@ const NavigationBar = () => {
     sessionStorage.removeItem("bought");
   };
   const search=useOutletContext();
-
+  const dispatch=useDispatch();
   const handleSearchChange=(e)=>{
-
-     search(e.target.value)
+    dispatch(searchItems(e.target.value))
+    search(e.target.value)
   }
   return (
     <nav>

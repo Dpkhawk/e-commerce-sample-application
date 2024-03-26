@@ -14,7 +14,7 @@ import { deleteData } from "../services/fetching";
 const Cart = () => {
   const navigation = useNavigate();
 
-  const apiUrl = process.env.REACT_APP_DATA_URL
+  const apiUrl = process.env.REACT_APP_CARTDATA_ENDPOINT
   const [price, setPrice] = useState(0);
   const totalItems = useSelector((state) => state.cartValue.items);
   const dispatch = useDispatch();

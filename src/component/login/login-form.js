@@ -7,7 +7,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
 
   const navigation = useNavigate();
-  const apiUrl1 = process.env.REACT_APP_REGISTERS_URL
+  const apiUrl1 = process.env.REACT_APP_REGISTERS_ENDPOINT
   
   const handleSubmit = (e) => {
     e.preventDefault();

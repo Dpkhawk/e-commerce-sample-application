@@ -9,8 +9,8 @@ const CartItemView = ({ products, handleInputChanges,url }) => {
 
   const handleClick = (products) => {
     deleteData(`${url}/${products.id}`)
-   .then(()=>alert("items deleted successfully"))
-   .catch(()=>alert("something is wrong"))
+     .then(()=>alert("items deleted successfully"))
+     .catch(()=>alert("something is wrong"))
     dispatch(deleteItems(products.id));
   };
 
@@ -46,9 +46,11 @@ const CartItemView = ({ products, handleInputChanges,url }) => {
           type="number"
           value={weight}
           onChange={(e) => totalChange(e, products.price)}
+          min={1}
+          max={9}
         />
-        <div key={products.id}>
-          <p className="cartPrice" key={products.id}>
+        <div>
+          <p className="cartPrice" >
             {weight * products.price}
           </p>
         </div>

@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import React from "react";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
 import fetchData from "../services/fetching";
 import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
 
 
 const Products = () => {
-  const apiUrl2 = process.env.REACT_APP_API_URL;
+  const apiUrl2 = process.env.REACT_APP_PRODUCT_ENDPOINT;
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
+  const[filters,setFilter]=useState("all")
   useEffect(() => {
     const fetching = async () => {
       const result = await fetchData(apiUrl2);
@@ -20,17 +22,23 @@ const Products = () => {
     };
     fetching();
   }, []);
+
+  const value=useSelector(state=>state.cartValue.value)
+ 
   const searchBar = (searchItems) => {
-    if (searchItems === "") {
-      setAllProducts(filterProducts);
+    if (searchItems=== "") {
+      handleFilter(filters)
     } else {
-      const da = filterProducts.filter(
-        (item)=>item.name.toLowerCase().includes(searchItems.toLowerCase())
+      const data = filterProducts.filter(
+        (item)=>filters==='all'?item.name.toLowerCase().startsWith(searchItems.toLowerCase()):item.name.toLowerCase().startsWith(searchItems.toLowerCase())&&item.category===filters
       );
-      setAllProducts(da);
+      setAllProducts(data);
     }
-  };
+  }
+  
+  
   const handleFilter = (filter) => {
+    setFilter(filter)
     if (filter === "all") {
       setAllProducts([...filterProducts]);
     } else {
@@ -40,6 +48,7 @@ const Products = () => {
     }
   };
   const functionToCart = (obj) => {
+    
     selectedItems.map((e, i) => {
       if (e.name === obj.name || e.price === 0) {
         selectedItems.splice(i, 1);
@@ -47,6 +56,7 @@ const Products = () => {
     });
     setSelectedItems([...selectedItems, obj]);
   };
+
   const now = Date.now();
   return (
     <div className="displayProducts">
@@ -55,7 +65,7 @@ const Products = () => {
           value={true}
           setSearchItems={(value) => searchBar(value)}
         /> */}
-        <Outlet context={searchBar}/>
+        <Outlet context={searchBar} />
         
       </div>
       
@@ -66,10 +76,8 @@ const Products = () => {
               <div key={vegetables.id}>
                 <ProductItemView
                   product={vegetables}
-                  key={vegetables.id}
                   functionToCart={(obj) => functionToCart(obj)}
                   id={now}
-                  products={filterProducts}
                 />
               </div>
             );
@@ -103,7 +111,7 @@ const Products = () => {
       </div>
       <div className="block4">
         {/* <Footer /> */}
-        <Outlet />
+        <Outlet component={<Footer/>}/>
       </div>
     </div>
   );
