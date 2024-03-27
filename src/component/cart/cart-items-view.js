@@ -3,6 +3,7 @@ import React from "react";
 import { deleteItems } from "../redux/reducer";
 import { useDispatch } from "react-redux";
 import { deleteData, putData } from "../services/fetching";
+
 const CartItemView = ({ products, handleInputChanges,url }) => {
   const [weight, setWeight] = useState(products.kgs);
   const dispatch = useDispatch();
@@ -72,5 +73,7 @@ const CartItemView = ({ products, handleInputChanges,url }) => {
         </div>
       </div>
   );
-};
+}
+
+
 export default CartItemView;

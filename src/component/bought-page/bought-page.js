@@ -4,6 +4,7 @@ import Confirm from "../../assests/orderconfirmation.png";
 import { useNavigate } from "react-router-dom";
 
 export default function BoughtPage() {
+  try{
   const navigation = useNavigate();
 
   return (
@@ -19,5 +20,8 @@ export default function BoughtPage() {
         </div>
       </div>
     </>
-  );
+  );}
+  catch{
+    alert("seomthing is wrong")
+  }
 }

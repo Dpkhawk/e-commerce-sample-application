@@ -5,7 +5,7 @@ import { Outlet,  useNavigate } from "react-router";
 
 import React from "react";
 import CartItemView from "./cart-items-view";
-import fetchData from "../services/fetching";
+import fetchData, { postData } from "../services/fetching";
 import { useDispatch, useSelector } from "react-redux";
 import { addingStateValue } from "../redux/reducer";
 import { deleteData } from "../services/fetching";
@@ -19,7 +19,7 @@ const Cart = () => {
   const totalItems = useSelector((state) => state.cartValue.items);
   const dispatch = useDispatch();
   let prices = 0;
-
+  console.log(totalItems);
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchData(apiUrl);
@@ -28,15 +28,15 @@ const Cart = () => {
     fetchdata();
   }, []);
 
-  const filteredValues = totalItems.filter(
-    (items) => items.userName === sessionStorage.getItem("userId")
-  );
+  // const filteredValues = totalItems.filter(
+  //   (items) => items.userName === sessionStorage.getItem("userId")
+  // );
   const handleInputChange = (weight, totalPrice) => {
     prices += weight * totalPrice;
     setPrice(prices);
   };
   const handleClick = () => {
-    filteredValues.map((item)=>{
+    totalItems.map((item)=>{
       deleteData(`${apiUrl}/${item.id}`)
     })
     sessionStorage.setItem("bought", true);
@@ -51,7 +51,7 @@ const Cart = () => {
           <Outlet/>
         </div>
         <div className="mainContent">
-          {filteredValues.map((product) => {
+          {totalItems.map((product) => {
             return (
               <div key={product.id}>
                 <CartItemView
@@ -65,7 +65,7 @@ const Cart = () => {
             );
           })}
           <button
-            disabled={filteredValues.length === 0}
+            disabled={totalItems.length === 0}
             type="button"
             className="btn btn-success buyProducts"
             onClick={handleClick}

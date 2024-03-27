@@ -1,15 +1,18 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {  useCallback, useEffect, useMemo, useState } from "react";
 import React from "react";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";
 import ProductSideBar from "./product-side-bar";
 import fetchData from "../services/fetching";
 import { Outlet } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeSearchbar } from "../redux/reducer";
+
 
 
 const Products = () => {
   const apiUrl2 = process.env.REACT_APP_PRODUCT_ENDPOINT;
+  const dispatch=useDispatch()
   const [allProducts, setAllProducts] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -21,6 +24,9 @@ const Products = () => {
       setFilterProducts([...result]);
     };
     fetching();
+    dispatch(changeSearchbar(true))
+    return ()=>{dispatch(changeSearchbar(false))}
+   
   }, []);
 
   const value=useSelector(state=>state.cartValue.value)
@@ -37,6 +43,7 @@ const Products = () => {
   }
   
   
+  
   const handleFilter = (filter) => {
     setFilter(filter)
     if (filter === "all") {
@@ -47,6 +54,8 @@ const Products = () => {
       );
     }
   };
+ useMemo(()=>searchBar(value),[value])
+  
   const functionToCart = (obj) => {
     
     selectedItems.map((e, i) => {
@@ -65,7 +74,7 @@ const Products = () => {
           value={true}
           setSearchItems={(value) => searchBar(value)}
         /> */}
-        <Outlet context={searchBar} />
+        {/* <Outlet context={searchBar} /> */}
         
       </div>
       
@@ -111,7 +120,7 @@ const Products = () => {
       </div>
       <div className="block4">
         {/* <Footer /> */}
-        <Outlet component={<Footer/>}/>
+        {/* <Outlet component={<Footer/>}/> */}
       </div>
     </div>
   );

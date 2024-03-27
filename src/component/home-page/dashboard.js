@@ -13,7 +13,7 @@ const DashBoard = () => {
   };
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div
         id="carouselExampleIndicators"
         className="carousel slide"
@@ -82,7 +82,7 @@ const DashBoard = () => {
           <span classN="sr-only">Next</span>
         </a>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

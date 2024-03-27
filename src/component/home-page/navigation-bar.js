@@ -6,17 +6,18 @@ import { searchItems } from "../redux/reducer";
 
 const NavigationBar = () => {
   const loginValue = sessionStorage.getItem("userId");
+  const searchValue=useSelector(state=>state.cartValue.searchBar)
   const navigation = useNavigate();
   const handleChange = () => {
     navigation("/loginPage");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("bought");
   };
-  const search=useOutletContext();
+  // const search=useOutletContext();
   const dispatch=useDispatch();
   const handleSearchChange=(e)=>{
     dispatch(searchItems(e.target.value))
-    search(e.target.value)
+    // search(e.target.value)
   }
   return (
     <nav>
@@ -31,11 +32,11 @@ const NavigationBar = () => {
             Cart
           </Link>
         ) : null}
-        <Link className="homeLinks" to={"/products"}>
+        <Link className="homeLinks" to={"/products"} >
           Products
         </Link>
       </div>
-      {search ? (
+      {searchValue ? (
         <input
           className="searchBar"
           placeholder="search items"
