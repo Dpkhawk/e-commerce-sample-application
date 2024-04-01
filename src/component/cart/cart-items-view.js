@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useMemo } from "react";
 import React from "react";
 import { deleteItems } from "../redux/reducer";
 import { useDispatch } from "react-redux";
@@ -30,7 +30,7 @@ const CartItemView = ({ products, handleInputChanges,url }) => {
   const totalChange = (e) => {
     setWeight(e.target.value);
   };
-  handleInputChanges(weight, products.price);
+  useMemo(()=>handleInputChanges(weight, products.price),[weight]);
 
   return (
       <div className="innerCarts" >

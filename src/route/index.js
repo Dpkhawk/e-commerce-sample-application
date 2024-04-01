@@ -42,7 +42,6 @@ const Router = () => {
             </NestedLayout>
           }
         />
-
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route
           path="/cart"
@@ -53,7 +52,6 @@ const Router = () => {
           }
         >
           <Route path="/cart" element={<NavigationBar />} />
-          <Route path="/cart" element={<Footer/>}/>
         </Route>
 
         <Route

@@ -1,4 +1,4 @@
-import {  useCallback, useEffect, useMemo, useState } from "react";
+import {  useEffect, useMemo, useState } from "react";
 import React from "react";
 import ProductItemView from "./product-item-view";
 import Footer from "../footer/footer";

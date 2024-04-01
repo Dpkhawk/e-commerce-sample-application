@@ -8,7 +8,6 @@ const CartChanges = createSlice({
       state.items = state.items.filter((items) => items.id !== action.payload);
     },
     addingStateValue(state, action) {
-      // state.items = [...action.payload];
       state.items=action.payload.filter(items=>items.userName===sessionStorage.getItem("userId"))
     },
     searchItems(state,action){
