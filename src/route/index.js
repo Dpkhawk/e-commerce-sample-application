@@ -13,6 +13,7 @@ import PrivateRoute from "../component/private-route/private-route";
 import NavigationBar from "../component/home-page/navigation-bar";
 import NestedLayout from "../component/nested-route/nested-layout";
 import Footer from "../component/footer/footer";
+import OrderHistory from "../component/order-history/order-history";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -53,6 +54,16 @@ const Router = () => {
         >
           <Route path="/cart" element={<NavigationBar />} />
         </Route>
+        <Route
+          path="/orderhistory"
+          element={
+            <PrivateRoute>
+              <OrderHistory />
+            </PrivateRoute>
+          }
+        >
+          <Route path="/orderhistory" element={<NavigationBar />} />
+          </Route>
 
         <Route
           path="/loginPage"

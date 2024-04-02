@@ -28,7 +28,6 @@ const Products = () => {
     return ()=>{dispatch(changeSearchbar(false))}
    
   }, []);
-
   const value=useSelector(state=>state.cartValue.value)
  
   const searchBar = (searchItems) => {
@@ -120,7 +119,7 @@ const Products = () => {
       </div>
       <div className="block4">
         {/* <Footer /> */}
-        {/* <Outlet component={<Footer/>}/> */}
+        {/* <Outlet name={'main'}/> */}
       </div>
     </div>
   );

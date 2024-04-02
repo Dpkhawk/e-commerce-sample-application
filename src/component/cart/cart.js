@@ -15,11 +15,11 @@ const Cart = () => {
   const navigation = useNavigate();
 
   const apiUrl = process.env.REACT_APP_CARTDATA_ENDPOINT
+  const historyURL=process.env.REACT_APP_HISTORY_ENDPOINT
   const [price, setPrice] = useState(0);
   const totalItems = useSelector((state) => state.cartValue.items);
   const dispatch = useDispatch();
   let prices = 0;
-  console.log(totalItems);
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchData(apiUrl);
@@ -35,8 +35,11 @@ const Cart = () => {
     prices += weight * totalPrice;
     setPrice(prices);
   };
+  const todayDate=new Date().getDate()
+  const month=new Date().getMonth()
   const handleClick = () => {
     totalItems.map((item)=>{
+      postData(historyURL,{...item,date:{todayDate:todayDate,month:month}})
       deleteData(`${apiUrl}/${item.id}`)
     })
     sessionStorage.setItem("bought", true);

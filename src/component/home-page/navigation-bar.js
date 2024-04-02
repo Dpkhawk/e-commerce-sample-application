@@ -1,4 +1,4 @@
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import FoodKart from "../../assests/food kart.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,11 +13,10 @@ const NavigationBar = () => {
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("bought");
   };
-  // const search=useOutletContext();
+  
   const dispatch=useDispatch();
   const handleSearchChange=(e)=>{
     dispatch(searchItems(e.target.value))
-    // search(e.target.value)
   }
   return (
     <nav>
@@ -35,6 +34,11 @@ const NavigationBar = () => {
         <Link className="homeLinks" to={"/products"} >
           Products
         </Link>
+        {loginValue ? (
+          <Link className="homeLinks" to={"/orderhistory"}>
+            My Orders
+          </Link>
+        ) : null}
       </div>
       {searchValue ? (
         <input

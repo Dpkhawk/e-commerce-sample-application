@@ -19,7 +19,7 @@ const SignUp = () => {
     address: "",
     password: "",
     zipcode: "",
-    district,
+    district: "",
   });
   const [confirmPassword, setConfirmPassword] = useState();
   const usenavigation = useNavigate();

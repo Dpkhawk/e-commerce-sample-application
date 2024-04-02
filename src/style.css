@@ -453,5 +453,12 @@ fieldset {
   margin: 60px;
   gap: 40px;
 }
-.searchButtonInput {
+.orders{
+  padding: 30px;
 }
+.historyImages{
+  height: 120px;
+  width: 120px;
+  margin: 20px;
+}
+

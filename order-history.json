@@ -1,0 +1,32 @@
+{
+  "history": [
+    {
+      "id": "1712054500750",
+      "name": "Camel",
+      "src": "https://res.cloudinary.com/perkchops/image/upload/v1659642929/ingredients/202274/zjbhci3wju4nvukahwlt.png",
+      "price": 2000,
+      "discount": 2500,
+      "category": "meats",
+      "kgs": "3",
+      "userName": "Deepak Kumar P",
+      "date": {
+        "todayDate": 2,
+        "month": 3
+      }
+    },
+    {
+      "id": "1712057136916",
+      "name": "Capsicum",
+      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
+      "price": 17,
+      "discount": 30,
+      "category": "vegetables",
+      "kgs": "2",
+      "userName": "Deepak Kumar P",
+      "date": {
+        "todayDate": 2,
+        "month": 3
+      }
+    }
+  ]
+}

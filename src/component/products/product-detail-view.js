@@ -3,8 +3,8 @@ import { useLocation } from "react-router";
 import React from "react";
 const ProductDetailView = () => {
   const location = useLocation();
-  console.log(location);
   const product = location.state.id;
+
   return (
     
       <div className="detailViewDiv">

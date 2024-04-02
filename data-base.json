@@ -77,6 +77,17 @@
       "password": "aPPA@9894",
       "zipcode": "890765",
       "district": "Trichy"
+    },
+    {
+      "id": "kumar",
+      "email": "kumar@gmail.com",
+      "dob": "2024-04-02",
+      "mobileNumber": "7896543452",
+      "gender": "Male",
+      "address": "karur",
+      "password": "Amma@8508",
+      "zipcode": "789433",
+      "district": "Karur"
     }
   ]
 }

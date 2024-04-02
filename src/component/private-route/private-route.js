@@ -1,4 +1,5 @@
 import DashBoard from "../home-page/dashboard";
+import NestedLayout from "../nested-route/nested-layout";
 
 const PrivateRoute = ({ value, children }) => {
   let values;
@@ -15,7 +16,7 @@ const PrivateRoute = ({ value, children }) => {
   if (values) {
     return children;
   } else {
-    return <DashBoard />;
+    return <NestedLayout><DashBoard /></NestedLayout>;
   }
 };
 export default PrivateRoute;
