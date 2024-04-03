@@ -12,7 +12,6 @@ import BoughtPage from "../component/bought-page/bought-page";
 import PrivateRoute from "../component/private-route/private-route";
 import NavigationBar from "../component/home-page/navigation-bar";
 import NestedLayout from "../component/nested-route/nested-layout";
-import Footer from "../component/footer/footer";
 import OrderHistory from "../component/order-history/order-history";
 const Router = () => {
   return (
@@ -63,7 +62,7 @@ const Router = () => {
           }
         >
           <Route path="/orderhistory" element={<NavigationBar />} />
-          </Route>
+        </Route>
 
         <Route
           path="/loginPage"
@@ -81,7 +80,9 @@ const Router = () => {
               <BoughtPage />
             </PrivateRoute>
           }
-        />
+        >
+          <Route path="/boughtpage" element={<NavigationBar />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

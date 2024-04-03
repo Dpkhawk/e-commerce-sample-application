@@ -6,21 +6,20 @@ import { searchItems } from "../redux/reducer";
 
 const NavigationBar = () => {
   const loginValue = sessionStorage.getItem("userId");
-  const searchValue=useSelector(state=>state.cartValue.searchBar)
+  const searchValue = useSelector((state) => state.cartValue.searchBar);
   const navigation = useNavigate();
   const handleChange = () => {
     navigation("/loginPage");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("bought");
   };
-  
-  const dispatch=useDispatch();
-  const handleSearchChange=(e)=>{
-    dispatch(searchItems(e.target.value))
-  }
+
+  const dispatch = useDispatch();
+  const handleSearchChange = (e) => {
+    dispatch(searchItems(e.target.value));
+  };
   return (
     <nav>
-
       <div className="FloatLeft">
         <Link to={"/"} className="homeLinks">
           <img className="logoNav" src={FoodKart} alt="food kart" />
@@ -31,12 +30,12 @@ const NavigationBar = () => {
             Cart
           </Link>
         ) : null}
-        <Link className="homeLinks" to={"/products"} >
+        <Link className="homeLinks" to={"/products"}>
           Products
         </Link>
         {loginValue ? (
           <Link className="homeLinks" to={"/orderhistory"}>
-            My Orders
+            Orders
           </Link>
         ) : null}
       </div>
@@ -45,7 +44,7 @@ const NavigationBar = () => {
           className="searchBar"
           placeholder="search items"
           type="text"
-          onChange={(e) =>handleSearchChange(e)}
+          onChange={(e) => handleSearchChange(e)}
         />
       ) : null}
       <div className="LogIn">

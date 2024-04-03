@@ -461,4 +461,7 @@ fieldset {
   width: 120px;
   margin: 20px;
 }
+#confirm-password{
+  margin: 10px 10px 0px 10px;
+}
 

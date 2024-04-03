@@ -30,7 +30,7 @@
       "mobileNumber": "7598686691",
       "gender": "Male",
       "address": "sirumugai",
-      "password": "abi@12",
+      "password": "dEEPAK@12",
       "zipcode": "78635",
       "district": "Erode"
     },
@@ -88,6 +88,17 @@
       "password": "Amma@8508",
       "zipcode": "789433",
       "district": "Karur"
+    },
+    {
+      "id": "deepak",
+      "email": "deepakperiyasamy1212@gmail.com",
+      "dob": "2001-12-12",
+      "mobileNumber": "6789076546",
+      "gender": "Male",
+      "address": "Namakkal",
+      "password": "aMMA@9894",
+      "zipcode": "567893",
+      "district": "Namakkal"
     }
   ]
 }
