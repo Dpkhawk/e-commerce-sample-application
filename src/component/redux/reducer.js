@@ -20,7 +20,6 @@ const CartChanges = createSlice({
     },
   },
 });
-console.log( CartChanges);
 export const { deleteItems, addingStateValue, searchItems, changeSearchbar } =
   CartChanges.actions;
 export default CartChanges.reducer;

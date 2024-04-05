@@ -21,23 +21,23 @@
       "userName": "Vijay"
     },
     {
-      "id": "1712140442226",
-      "name": "Capsicum",
-      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
-      "price": 17,
-      "discount": 30,
-      "category": "vegetables",
-      "kgs": "2",
-      "userName": "Deepak Kumar P"
-    },
-    {
-      "id": "1712141716228",
+      "id": "1712218740315",
       "name": "Apple",
       "src": "https://www.shutterstock.com/image-photo/red-apple-isolated-on-white-600nw-1727544364.jpg",
       "price": 16,
       "discount": 25,
       "category": "fruits",
-      "kgs": 1,
+      "kgs": "5",
+      "userName": "Deepak Kumar P"
+    },
+    {
+      "id": "1712219158881",
+      "name": "Capsicum",
+      "src": "https://www.veggycation.com.au/siteassets/veggycationvegetable/capsicum-red.jpg",
+      "price": 17,
+      "discount": 30,
+      "category": "vegetables",
+      "kgs": "8",
       "userName": "Deepak Kumar P"
     }
   ]

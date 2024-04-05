@@ -26,7 +26,7 @@ const Products = () => {
     };
   }, []);
   const value = useSelector((state) => state.cartValue.value);
-
+   console.log(<h1>welcome</h1>)
   const searchBar = (searchItems) => {
     if (searchItems === "") {
       handleFilter(filters);

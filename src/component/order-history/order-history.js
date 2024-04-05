@@ -40,7 +40,7 @@ const OrderHistory = () => {
               <h3>Item Kgs:{items.kgs}</h3>
               <p>
                 Delivery Status:
-                {items.date.todayDate - date >= 2 || month > items.date.month
+                { date-items.date.todayDate >= 2 || month > items.date.month
                   ? "Delivered"
                   : "Wait for Delivery"}
               </p>
