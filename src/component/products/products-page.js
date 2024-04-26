@@ -15,6 +15,7 @@ const Products = () => {
   const [filters, setFilter] = useState("all");
   useEffect(() => {
     const fetching = async () => {
+      // console.log(apiUrl2);
       const result = await fetchData(apiUrl2);
       setAllProducts([...result]);
       setFilterProducts([...result]);
@@ -26,7 +27,6 @@ const Products = () => {
     };
   }, []);
   const value = useSelector((state) => state.cartValue.value);
-   console.log(<h1>welcome</h1>)
   const searchBar = (searchItems) => {
     if (searchItems === "") {
       handleFilter(filters);

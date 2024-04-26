@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { postData } from "../services/fetching";
+import bcrypt from 'bcryptjs'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
   const [district, setDistrict] = useState([
     "Chennai",
@@ -11,7 +14,7 @@ const SignUp = () => {
     "Namakkal",
   ]);
   const [arrayOfItems, setArrayOfItems] = useState({
-    id: "",
+    UserName: "",
     email: "",
     dob: "",
     mobileNumber: "",
@@ -26,28 +29,31 @@ const SignUp = () => {
   const apiURL = process.env.REACT_APP_REGISTERS_ENDPOINT;
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const hashedpassword=await bcrypt.hash(arrayOfItems.password,10)
     try {
       if (
-        arrayOfItems.id.match("^[a-zA-Z]+$") &&
+        arrayOfItems.UserName.match("^[a-zA-Z]+$") &&
         arrayOfItems.password.match("(?=.*[A-Z])(?=.*).{8,}") &&
         arrayOfItems.mobileNumber.match("[0-9]{10}") &&
         arrayOfItems.zipcode.match("[0-9]{6}")
       ) {
+        
         if (arrayOfItems.password === confirmPassword) {
+         
           await postData(
             apiURL,
-
-            arrayOfItems
+            // arrayOfItems
+            {...arrayOfItems,password:hashedpassword}
           )
-            .then(() => alert("signUp successful"))
-            .catch(() => alert("something is wrong"));
+            .then(() => toast.success("signUp successful"))
+            .catch(() => toast.error("something is wrong"));
           usenavigation("/loginPage");
         } else {
-          alert("passwords are wrong");
+          toast.error("passwords are wrong");
         }
       }
     } catch {
-      alert("Provided detatils are not in expected format");
+      toast.error("Provided detatils are not in expected format");
     }
   };
 
@@ -65,7 +71,7 @@ const SignUp = () => {
               className="signUpInput"
               required
               onChange={(e) =>
-                setArrayOfItems({ ...arrayOfItems, id: e.target.value })
+                setArrayOfItems({ ...arrayOfItems, UserName: e.target.value })
               }
               placeholder="Full Name"
               id="username"

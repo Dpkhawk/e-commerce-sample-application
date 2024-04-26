@@ -1,6 +1,9 @@
 import { useState } from "react";
 import fetchData, { putData } from "../services/fetching";
 import { useNavigate } from "react-router";
+import bcrypt from 'bcryptjs'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ForgotPassword = () => {
   const [Name, setName] = useState("");
   const [disable, setDisable] = useState(true);
@@ -13,23 +16,25 @@ const ForgotPassword = () => {
   const handleChange = async (e) => {
     setConfirmPassword(e.target.value);
     await fetchData(`${apiUrl1}/${Name}`).then((result) => {
+      
       setDisable(false);
       setData(result);
     });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const encryptPassword=await bcrypt.hash(password,10)
     if (password.match("(?=.*[A-Z])(?=.*).{8,}")) {
       if (password === confirmPassword) {
-        await putData(`${apiUrl1}/${Name}`, {
-          ...data,
-          password: password,
-        }).then(() => navigation("/loginPage"));
+        await putData(`${apiUrl1}/${data[0]._id}`, {
+          password: encryptPassword,
+        })
+        .then(() => navigation("/loginPage"));
       } else {
-        alert("Passwords and ConfirmPasswords Must be Same");
+        toast.error("Passwords and ConfirmPasswords Must be Same");
       }
     } else {
-      alert(
+      toast.error(
         "Password must contain at least one capital letter, one number, and be at least 8 characters long"
       );
     }

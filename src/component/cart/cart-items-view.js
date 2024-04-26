@@ -3,27 +3,28 @@ import React from "react";
 import { deleteItems } from "../redux/reducer";
 import { useDispatch } from "react-redux";
 import { deleteData, putData } from "../services/fetching";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartItemView = ({ products, handleInputChanges, url }) => {
   const [weight, setWeight] = useState(products.kgs);
   const dispatch = useDispatch();
 
   const handleClick = (products) => {
-    deleteData(`${url}/${products.id}`)
-      .then(() => dispatch(deleteItems(products.id)))
-      .catch(() => alert("something is wrong"));
+    deleteData(`${url}/${products._id}`)
+      .then(() => dispatch(deleteItems(products._id)))
+      .catch(() => toast.success("Something Is Wrong"));
   };
 
   const handleChange = (products) => {
     if (weight <= 0 || weight >= 10) {
-      alert("Quantity is not acceptable");
+      toast.error("Quantity is not acceptable");
     } else {
-      putData(`${url}/${products.id}`, {
-        ...products,
+      putData(`${url}/${products._id}`, {
         kgs: weight,
       })
-        .then(() => alert("items edited successfully"))
-        .catch(() => alert("something is wrong"));
+        .then(() => toast.success("Items Edited Successfully"))
+        .catch(() => toast.error("Something Is Wrong"));
     }
   };
   const totalChange = (e) => {

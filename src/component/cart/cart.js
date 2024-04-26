@@ -17,6 +17,7 @@ const Cart = () => {
   const totalItems = useSelector((state) => state.cartValue.items);
   const dispatch = useDispatch();
   let prices = 0;
+  // console.log(apiUrl);
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchData(apiUrl);

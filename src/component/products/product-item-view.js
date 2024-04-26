@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteData, postData } from "../services/fetching";
+import { deleteData, postData, putData } from "../services/fetching";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updatingItems } from "../redux/reducer";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductItemView = ({ product, functionToCart, id }) => {
   const [weight, setWeight] = useState(1);
   const [cart, setCart] = useState(true);
+  const dispatch=useDispatch()
+  let putdata=false;
   const cartData = useSelector((state) => state.cartValue.items);
   const apiURL = process.env.REACT_APP_CARTDATA_ENDPOINT;
   const navigation = useNavigate();
@@ -20,26 +25,35 @@ const ProductItemView = ({ product, functionToCart, id }) => {
   };
   const handleClick = (cartProduct) => {
     if (weight <= 0 || weight >= 10) {
-      alert("Quantity is not acceptable");
+      toast.error("Quantity is not acceptable");
     } else {
       setCart(false);
       cartData.map((firstElement) => {
         if (
+          !putdata&&
           cartProduct.name === firstElement.name &&
           sessionStorage.getItem("userId") === firstElement.userName
         ) {
-          deleteData(`${apiURL}/${firstElement.id}`);
+          
+          putData(`${apiURL}/${firstElement._id}`,{kgs: weight,});
+          putdata=true
+          dispatch(updatingItems({id:firstElement._id,kgs:weight}))
         }
       });
-
+     
+     if(!putdata){
       const cartObject = {
         ...cartProduct,
         kgs: weight,
         userName: sessionStorage.getItem("userId"),
-        id: `${id}`,
       };
       postData(apiURL, cartObject);
-    }
+     
+     }
+     
+     
+}
+    
   };
 
   const handleDetailView = (products) => {

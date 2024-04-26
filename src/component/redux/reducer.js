@@ -5,12 +5,22 @@ const CartChanges = createSlice({
   initialState: { value: "", items: [], searchBar: false },
   reducers: {
     deleteItems(state, action) {
-      state.items = state.items.filter((items) => items.id !== action.payload);
+      state.items = state.items.filter((items) => items._id !== action.payload);
     },
     addingStateValue(state, action) {
       state.items = action.payload.filter(
         (items) => items.userName === sessionStorage.getItem("userId")
       );
+    },
+    updatingItems(state,action){
+      state.items=state.items.map((item)=>{
+         if(action.payload.id===item._id){
+          return {...item,kgs:action.payload.kgs}
+         }
+         else{
+          return item
+         }
+      })
     },
     searchItems(state, action) {
       state.value = action.payload;
@@ -20,6 +30,6 @@ const CartChanges = createSlice({
     },
   },
 });
-export const { deleteItems, addingStateValue, searchItems, changeSearchbar } =
+export const { deleteItems, addingStateValue, searchItems, changeSearchbar,updatingItems } =
   CartChanges.actions;
 export default CartChanges.reducer;
