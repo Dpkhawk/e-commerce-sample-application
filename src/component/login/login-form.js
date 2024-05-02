@@ -12,14 +12,13 @@ const LoginForm = () => {
   const apiUrl1 = process.env.REACT_APP_REGISTERS_ENDPOINT;
 
   const handleSubmit = async (e) => {
- 
+  console.log(apiUrl1);
    e.preventDefault(); 
    const result= await fetchData(`${apiUrl1}/${userName}`)
-   const decryptPassword=await bcrypt.compare(password,result[0].password)
+   const decryptPassword=await bcrypt.compare(password,result.password)
    
-
    
-        if (result[0].UserName === userName && decryptPassword) {
+        if (result._id === userName && decryptPassword) {
           toast.success('Login Success')
           sessionStorage.setItem("userId", userName);
           navigation("/");

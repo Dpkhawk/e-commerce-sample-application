@@ -5,7 +5,7 @@ const cors=require('cors')
 
 const app=express()
 mongose.connect('mongodb://localhost:27017/e-commerce')
-app.use(cors({origin:"http://localhost:3000"}))
+app.use(cors({origin:'http://localhost:3000'}))
 app.use(express.json())
 app.use('/',route)
 app.listen(2000)

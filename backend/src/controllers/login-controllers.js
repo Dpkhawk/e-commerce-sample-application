@@ -2,7 +2,7 @@ const Login=require('../models/logins')
 
 const allUsers=async(req,res)=>{
     const name=req.params.id
-    // console.log('hi');
+    console.log('hi');
     if(name){
          Login.find({UserName:name})
         .then(data=>res.send(data))

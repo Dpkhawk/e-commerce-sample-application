@@ -129,7 +129,7 @@
             "category": "fruits"
         },
         {
-            "id": 16,
+            "_id": 16,
             "name": "PineApple",
             "src": "https://kidseatincolor.com/wp-content/uploads/2021/10/Pineapple.jpg",
             "price": 90,

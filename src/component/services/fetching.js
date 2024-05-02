@@ -2,7 +2,9 @@ import axios from "axios";
 
 const fetchData = async (url) => {
   try {
+    console.log(url);
     const result = await axios.get(url);
+    
     return result.data;
   } catch {
     alert("invalid access ");

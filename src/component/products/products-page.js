@@ -15,8 +15,9 @@ const Products = () => {
   const [filters, setFilter] = useState("all");
   useEffect(() => {
     const fetching = async () => {
-      // console.log(apiUrl2);
+      
       const result = await fetchData(apiUrl2);
+      console.log(result);
       setAllProducts([...result]);
       setFilterProducts([...result]);
     };

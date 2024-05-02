@@ -14,7 +14,7 @@ const SignUp = () => {
     "Namakkal",
   ]);
   const [arrayOfItems, setArrayOfItems] = useState({
-    UserName: "",
+    _id: "",
     email: "",
     dob: "",
     mobileNumber: "",
@@ -32,7 +32,7 @@ const SignUp = () => {
     const hashedpassword=await bcrypt.hash(arrayOfItems.password,10)
     try {
       if (
-        arrayOfItems.UserName.match("^[a-zA-Z]+$") &&
+        arrayOfItems._id.match("^[a-zA-Z]+$") &&
         arrayOfItems.password.match("(?=.*[A-Z])(?=.*).{8,}") &&
         arrayOfItems.mobileNumber.match("[0-9]{10}") &&
         arrayOfItems.zipcode.match("[0-9]{6}")
@@ -71,7 +71,7 @@ const SignUp = () => {
               className="signUpInput"
               required
               onChange={(e) =>
-                setArrayOfItems({ ...arrayOfItems, UserName: e.target.value })
+                setArrayOfItems({ ...arrayOfItems, _id: e.target.value })
               }
               placeholder="Full Name"
               id="username"

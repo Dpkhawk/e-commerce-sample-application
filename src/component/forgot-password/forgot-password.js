@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     const encryptPassword=await bcrypt.hash(password,10)
     if (password.match("(?=.*[A-Z])(?=.*).{8,}")) {
       if (password === confirmPassword) {
-        await putData(`${apiUrl1}/${data[0]._id}`, {
+        await putData(`${apiUrl1}/${data._id}`, {
           password: encryptPassword,
         })
         .then(() => navigation("/loginPage"));

@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 
 const useSchema=new mongoose.Schema({
    
-    UserName:{
+    _id:{
         type:String
     },
     email:{
