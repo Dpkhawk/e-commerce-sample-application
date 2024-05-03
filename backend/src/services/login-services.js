@@ -1,4 +1,6 @@
-const userRepository = require( '../repository/login-repository');
+const UserRepository = require( '../repository/repo');
+const User=require('../models/logins')
+const userRepository=new UserRepository(User)
 
 class UserServices {
   async getAllUser() {

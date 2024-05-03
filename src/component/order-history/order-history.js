@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import fetchData from "../services/fetching";
 import { Outlet, useNavigate } from "react-router";
-
 const OrderHistory = () => {
+  
   const navigation = useNavigate();
   const [history, setHistory] = useState([]);
   const apiURL = process.env.REACT_APP_HISTORY_ENDPOINT;
   useEffect(() => {
+    
     const fetching = async () => {
       const result = await fetchData(apiURL);
       setHistory(

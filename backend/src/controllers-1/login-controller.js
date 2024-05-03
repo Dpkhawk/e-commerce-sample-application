@@ -6,7 +6,6 @@ class LoginController{
             
           if(req.params.id){
             const result=await services.getUserById(req.params.id)
-            console.log('result');
             if(result){
                 res.status(200).send(result)
             }

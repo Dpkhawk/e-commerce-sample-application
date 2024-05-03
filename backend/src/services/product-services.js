@@ -1,5 +1,6 @@
-const userRepository = require( '../repository/product-repository');
-
+const UserRepository = require( '../repository/repo');
+const User=require('../models/products')
+const userRepository=new UserRepository(User)
 class UserServices {
   async getAllUser() {
     const result = await userRepository.getAllUsers();

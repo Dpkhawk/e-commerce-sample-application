@@ -36,10 +36,11 @@ const Cart = () => {
     totalItems.map((item) => {
       dispatch(deleteItems(item.id));
       postData(historyURL, {
-        ...item,
+        name:item.name,src:item.src,price:item.price,discount:item.discount,category:item.category,kgs:item.kgs,userName:item.userName,
         date: { todayDate: todayDate, month: month },
       });
-      deleteData(`${apiUrl}/${item.id}`);
+      console.log(item);
+      deleteData(`${apiUrl}/${item._id}`);
     });
     sessionStorage.setItem("bought", true);
     navigation("/boughtpage");

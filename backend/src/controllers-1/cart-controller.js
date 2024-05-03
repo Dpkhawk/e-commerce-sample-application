@@ -40,5 +40,33 @@ class CartController{
         res.status(404).send('Not Found')
      }
    }
+   async updateCartProducts(req,res){
+    try{
+       const result=await services.updateUser(req.params.id,req.body)
+       if(result){
+        res.status(200).send(result);
+       }
+       else{
+        res.status(404).send('User Not Found');
+       }
+    }
+    catch{
+      res.status(500).send('Internal Server Error')
+    }
+   }
+   async deleteCartProducts(req,res){
+    try{
+        const result=await services.deleteUser(req.params.id)
+        if(result){
+         res.status(200).send(result);
+        }
+        else{
+         res.status(404).send('User Not Found');
+        }
+     }
+     catch{
+       res.status(500).send('Internal Server Error')
+     }
+   }
 }
 module.exports=CartController
