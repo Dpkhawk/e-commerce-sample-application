@@ -2,8 +2,9 @@ const UserRepository = require( '../repository/repo');
 const User=require('../models/cart')
 const userRepository=new UserRepository(User)
 class UserServices {
-  async getAllUser() {
-    const result = await userRepository.getAllUsers();
+  async getAllUser(name) {
+    const result = await userRepository.filteredUsers({userName:name});
+    console.log(result);
     return result;
   }
 
@@ -17,6 +18,7 @@ class UserServices {
     return result; 
   }
   async createUser(data){
+
       const result= await userRepository.createuser(data);
       return result;
   }

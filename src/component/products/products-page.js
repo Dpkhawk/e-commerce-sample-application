@@ -14,42 +14,49 @@ const Products = () => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [filters, setFilter] = useState("all");
   useEffect(() => {
-    const fetching = async () => {
+    // const fetching = async () => {
       
-      const result = await fetchData(apiUrl2);
-      console.log(result);
-      setAllProducts([...result]);
-      setFilterProducts([...result]);
-    };
-    fetching();
+    //   const result = await fetchData(apiUrl2);
+    //   setAllProducts([...result]);
+    //   setFilterProducts([...result]);
+    // };
+    // fetching();
+    console.log(allProducts);
     dispatch(changeSearchbar(true));
     return () => {
       dispatch(changeSearchbar(false));
     };
   }, []);
   const value = useSelector((state) => state.cartValue.value);
-  const searchBar = (searchItems) => {
+  const searchBar = async (searchItems) => {
     if (searchItems === "") {
       handleFilter(filters);
     } else {
-      const data = filterProducts.filter((item) =>
-        filters === "all"
-          ? item.name.toLowerCase().includes(searchItems.toLowerCase())
-          : item.name.toLowerCase().includes(searchItems.toLowerCase()) &&
-            item.category === filters
-      );
+      const values=value.toLowerCase();
+      const ori=values.slice(0,1).toUpperCase();
+      const data=await fetchData(`${apiUrl2}/${ori+values.slice(1,values.length)}`)
+      // const data = filterProducts.filter((item) =>
+      //   filters === "all"
+      //     ? item.name.toLowerCase().includes(searchItems.toLowerCase())
+      //     : item.name.toLowerCase().includes(searchItems.toLowerCase()) &&
+      //       item.category === filters
+      // );
       setAllProducts(data);
     }
   };
 
-  const handleFilter = (filter) => {
+  const handleFilter = async (filter) => {
     setFilter(filter);
     if (filter === "all") {
-      setAllProducts([...filterProducts]);
+      const result=await fetchData(apiUrl2)
+      // setAllProducts([...filterProducts]);
+      setAllProducts([...result])
     } else {
-      setAllProducts(
-        filterProducts.filter((product) => product.category === filter)
-      );
+      const result=await fetchData(`${apiUrl2}/${filter}`)
+      // setAllProducts(
+      //   result.filter((product) => product.category === filter)
+      // );
+      setAllProducts(result)
     }
   };
   useMemo(() => searchBar(value), [value]);

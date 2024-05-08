@@ -13,6 +13,7 @@
     "enzyme": "^3.11.0",
     "express": "^4.19.2",
     "json-server": "^1.0.0-alpha.23",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

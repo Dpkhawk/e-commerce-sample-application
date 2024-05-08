@@ -1,5 +1,6 @@
 const services=require('../services/login-services')
-
+const jwt=require('jsonwebtoken')
+const bcrypt=require('bcryptjs')
 class LoginController{
     async getAllUsers(req,res){
         try{
@@ -38,6 +39,21 @@ class LoginController{
         }
         catch{
            res.status(500).send('Internal Server Error')
+        }
+    }
+    async token(req,res){
+        try{
+          
+          const result=await services.getUserById(req.body)
+          if(result){
+            res.status(200).send(result);
+          }
+          else{
+             res.status(404).send('User Not Found');
+          }
+        }
+        catch{
+           res.status(500).send("Internal Server Error");
         }
     }
     async updateUser(req,res){

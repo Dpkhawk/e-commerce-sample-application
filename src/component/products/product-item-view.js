@@ -45,7 +45,6 @@ const ProductItemView = ({ product, functionToCart, id }) => {
       const cartObject = {
         ...cartProduct,
         kgs: weight,
-        userName: sessionStorage.getItem("userId"),
       };
       postData(apiURL, cartObject);
      

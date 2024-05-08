@@ -10,7 +10,8 @@ const NavigationBar = () => {
   const navigation = useNavigate();
   const handleChange = () => {
     navigation("/loginPage");
-    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("userId")
+    sessionStorage.removeItem("token");
     sessionStorage.removeItem("bought");
   };
 

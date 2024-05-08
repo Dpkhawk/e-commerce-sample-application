@@ -12,7 +12,7 @@ class CartController{
             }
         }
         else{
-            const result=await services.getAllUser()
+            const result=await services.getAllUser(req.userId)
             if(result){
                 res.status(200).send(result)
             }
@@ -27,7 +27,7 @@ class CartController{
    }
    async createCartProducts(req,res){
      try{
-        console.log('hello');
+        Object.assign(req.body,{userName:req.userId})
         const result=await services.createUser(req.body)
         if(result){
             res.status(200).send(result)

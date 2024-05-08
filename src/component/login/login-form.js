@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fetchData from "../services/fetching";
+import fetchData, { postData } from "../services/fetching";
 import bcrypt from 'bcryptjs'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,20 +9,18 @@ const LoginForm = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();
-  const apiUrl1 = process.env.REACT_APP_REGISTERS_ENDPOINT;
+  const apiUrl1 = process.env.REACT_APP_LOGIN_ENDPOINT;
 
   const handleSubmit = async (e) => {
     try{
    e.preventDefault(); 
-   const result= await fetchData(`${apiUrl1}/${userName}`)
-   const decryptPassword=await bcrypt.compare(password,result.password)
-   
-   
-        if (result._id === userName && decryptPassword) {
-          toast.success(`Welcome ${userName}`)
-          sessionStorage.setItem("userId", userName);
-          navigation("/");
-        } 
+   const result=await postData(`${apiUrl1}`,{userName,password})
+   if(result){
+    sessionStorage.setItem("token",result)
+    sessionStorage.setItem("userId", userName);
+    toast.success('Login Successful')
+    navigation("/");
+   }
         else{
           toast.error('Invalid Credentials')
         }

@@ -6,7 +6,9 @@ class UserRepository {
   getAllUsers() {
     return this.user.find();
   }
-
+  filteredUsers(condition){
+     return this.user.find(condition)
+  }
   getUserById(id) {
     return this.user.findById(id);
   }

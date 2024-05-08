@@ -8,9 +8,16 @@ class UserServices {
   }
 
   async getUserById(id) {
-    
-    const result = await userRepository.getUserById(id);
+    if(id==='fruits'||id==='vegetables'||id==='meats'){
+      const result = await userRepository.filteredUsers({category:id});
     return result;
+    }
+    else{
+      const result = await userRepository.filteredUsers({name:id});
+      return result;
+    }
+    
+    
   }
   async deleteUser(id){
     const result=await userRepository.deleteUser(id);

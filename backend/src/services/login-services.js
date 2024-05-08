@@ -1,7 +1,8 @@
 const UserRepository = require( '../repository/repo');
 const User=require('../models/logins')
 const userRepository=new UserRepository(User)
-
+const bcrypt=require('bcryptjs')
+const jwt=require('jsonwebtoken')
 class UserServices {
   async getAllUser() {
     const result = await userRepository.getAllUsers();
@@ -9,9 +10,18 @@ class UserServices {
   }
 
   async getUserById(id) {
-    
-    const result = await userRepository.getUserById(id);
-    return result;
+    const {userName,password}=id
+          const loginresult=await userRepository.getUserById(userName)
+          const checkpassword=await bcrypt.compare(password,loginresult.password)
+          if(checkpassword){
+            const token = jwt.sign({ userId: userName }, 'your-secret-key', {
+                expiresIn: '1h',
+                })
+            return token;
+          }
+          else{
+            return null
+          }
   }
   async deleteUser(id){
     const result=await userRepository.deleteUser(id);
