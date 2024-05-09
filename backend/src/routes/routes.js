@@ -30,7 +30,7 @@ route.get('/cart',verifyToken,cart.allCartProducts)
 route.post('/cart',verifyToken,cart.createCartProducts)
 route.delete('/cart/:id',cart.deleteCartProducts)
 route.put('/cart/:id',cart.updateCartProducts)
-route.get('/history',history.allHistories)
+route.get('/history',verifyToken,history.allHistories)
 route.post('/history',history.postHistories)
 module.exports=route
 

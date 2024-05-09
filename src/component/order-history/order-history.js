@@ -10,10 +10,7 @@ const OrderHistory = () => {
     
     const fetching = async () => {
       const result = await fetchData(apiURL);
-      setHistory(
-        result.filter(
-          (items) => items.userName === sessionStorage.getItem("userId")
-        )
+      setHistory(result
       );
     };
     fetching();

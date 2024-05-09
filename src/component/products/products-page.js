@@ -21,7 +21,6 @@ const Products = () => {
     //   setFilterProducts([...result]);
     // };
     // fetching();
-    console.log(allProducts);
     dispatch(changeSearchbar(true));
     return () => {
       dispatch(changeSearchbar(false));
@@ -32,16 +31,16 @@ const Products = () => {
     if (searchItems === "") {
       handleFilter(filters);
     } else {
-      const values=value.toLowerCase();
-      const ori=values.slice(0,1).toUpperCase();
-      const data=await fetchData(`${apiUrl2}/${ori+values.slice(1,values.length)}`)
+      // const data=await fetchData(`${apiUrl2}/${ori+values.slice(1,values.length)}`)
       // const data = filterProducts.filter((item) =>
       //   filters === "all"
       //     ? item.name.toLowerCase().includes(searchItems.toLowerCase())
       //     : item.name.toLowerCase().includes(searchItems.toLowerCase()) &&
       //       item.category === filters
       // );
-      setAllProducts(data);
+      // setFilterProducts()
+      
+      setAllProducts(filterProducts.filter((item)=>item.name.toLowerCase().includes(value)));
     }
   };
 
@@ -50,12 +49,14 @@ const Products = () => {
     if (filter === "all") {
       const result=await fetchData(apiUrl2)
       // setAllProducts([...filterProducts]);
+      setFilterProducts([...result])
       setAllProducts([...result])
     } else {
       const result=await fetchData(`${apiUrl2}/${filter}`)
       // setAllProducts(
       //   result.filter((product) => product.category === filter)
       // );
+      setFilterProducts([...result])
       setAllProducts(result)
     }
   };

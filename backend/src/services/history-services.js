@@ -9,8 +9,7 @@ class UserServices {
   }
 
   async getUserById(id) {
-    
-    const result = await userRepository.getUserById(id);
+    const result = await userRepository.filteredUsers({userName:id});
     return result;
   }
   async deleteUser(id){

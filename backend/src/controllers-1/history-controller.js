@@ -2,7 +2,7 @@ const services=require('../services/history-services')
 class HistoryController{
     async allHistories(req,res){
         try{
-         const result=await services.getAllUser()
+         const result=await services.getUserById(req.userId)
          if(result){
             res.status(200).send(result)
          }
